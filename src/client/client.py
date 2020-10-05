@@ -11,6 +11,7 @@ BUFFER_SIZE = 4096 # send 4096 bytes each time step
 
 # the ip address or hostname of the server, the receiver
 host = '52.186.137.191'
+host = 'localhost'
 # the port, let's use 5001
 port = 9898
 # the name of file we want to send, make sure it exists

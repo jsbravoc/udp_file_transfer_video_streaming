@@ -23,6 +23,9 @@ def read_listdir(dir):
     ind = 1
     archivs = list()
     for d in listdir:
+        if os.path.isdir(os.path.join(directory, d)):
+            # skip directories
+            continue
         archivs.append(f"{ind}-{d}")
         ind += 1
     return archivs
@@ -57,7 +60,7 @@ s = socket.socket()
 
 # bind the socket to our local address
 s.bind((SERVER_HOST, SERVER_PORT))
-directory = "archivos"
+directory = "D:\\Downloads"
 
 # enabling our server to accept connections
 # 25 here is the number of unaccepted connections that
@@ -73,31 +76,44 @@ print("\n\n---------------------------------------------------------------------
 opt = int(input("Seleccione el archivo que quiere enviar: "))
 while opt > len(lista):
     opt = input("Seleccione una opción válida: ")
-filename = os.path.join(directory, lista[opt-1].split("-")[1])
+filename = os.path.join(directory, lista[opt-1].partition("-")[len(lista[opt-1].partition("-"))-1])
 filesize = os.path.getsize(filename)
 usrs = int(input("Seleccione la cantidad de usuarios a los que quiere enviar el archivo: "))
 # accept connection if there is any
 conns = 0
 cmpltd = usrs
 print(f"[*] Listening as {SERVER_HOST}:{SERVER_PORT}")
+from multiprocessing.dummy import Pool as ThreadPool
+pool = ThreadPool(usrs)
+arrayOfThreads = [];
+
+
 try:
-    while True:
-        c, address = s.accept()
-        #print_lock.acquire()
-        # if below code is executed, that means the sender is connected
-        print(f"[+] {address} is connected.")
-        
-        notification = c.recv(BUFFER_SIZE).decode()
-        if notification == "Notificación de inicio":
-            conns += 1
-        else:
-            break
-    
-        start_new_thread(threaded, (c,))
-        # receive the file infos
-        # receive using client socket, not server socket
+        while conns < usrs:
+            c, address = s.accept()
+            #print_lock.acquire()
+            # if below code is executed, that means the sender is connected
+            print(f"[+] {address} is connected.")
+
+            notification = c.recv(BUFFER_SIZE).decode()
+            if notification == "Notificación de inicio":
+                conns += 1
+            else:
+                break
+
+            arrayOfThreads.append(c);
+            # receive the file infos
+            # receive using client socket, not server socket
+
+        pool.map(threaded, arrayOfThreads)
+
+
+        print("Finalizado")
+        s.close()
+
+
 except KeyboardInterrupt:
     s.close()
-    
+
 # close the server socket
 s.close()
