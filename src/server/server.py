@@ -1,5 +1,5 @@
 ﻿import socket
-import tqdm
+from tqdm.auto import tqdm
 import os
 from _thread import *
 from multiprocessing.dummy import Pool as ThreadPool
@@ -61,7 +61,7 @@ def read_listdir(dir):
 def threaded(client):
     client[0].send(f"{filename}{SEPARATOR}{filesize}".encode())
     # start sending the file
-    progress = tqdm.tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
+    progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
                 unit_divisor=BUFFER_SIZE)
     sended = 0
     with open(filename, "rb") as f:
@@ -85,41 +85,70 @@ def threaded(client):
             logger_tcp.critical(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
                     f"paquete :{round(sended/BUFFER_SIZE)}/{round(filesize/BUFFER_SIZE)}" )
 
+
 print("** Para utilizar valores por defecto, ingresar cadena vacía **")
-directory = str(input(f"Ingrese la dirección del directorio (valor por defecto: {DEFAULT_DIRECTORY}): "))
-if directory == "":
-    print(f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
-    directory = DEFAULT_DIRECTORY
-while not os.path.isdir(directory):
-    print(f"La dirección del directorio {directory} no existe, intente nuevamente")
+directoryConfirmed = False
+while not directoryConfirmed:
     directory = str(input(f"Ingrese la dirección del directorio (valor por defecto: {DEFAULT_DIRECTORY}): "))
     if directory == "":
         print(f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
         directory = DEFAULT_DIRECTORY
+    while not os.path.isdir(directory):
+        print(f"La dirección del directorio {directory} no existe, intente nuevamente")
+        directory = str(input(f"Ingrese la dirección del directorio (valor por defecto: {DEFAULT_DIRECTORY}): "))
+        if directory == "":
+            print(f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
+            directory = DEFAULT_DIRECTORY
 
 
-lista = read_listdir(directory)
-print("Mostrando lista de archivos:")
-print("---------------------------------------------------------------------------\n")
-for l in lista:
-    print(l)
-print("\n---------------------------------------------------------------------------")
-opt = input("Seleccione el archivo que quiere enviar: ")
-while not opt.isnumeric() or int(opt) > len(lista):
-    opt = input("Seleccione una opción válida: ")
-opt = int(opt)
-filename = os.path.join(directory, lista[opt - 1].partition("-")[len(lista[opt - 1].partition("-")) - 1])
-filesize = os.path.getsize(filename)
-usrs = input("Seleccione la cantidad de usuarios a los que quiere enviar el archivo: ")
-while not usrs.isnumeric() or int(usrs) < 1:
-    usrs = input("Seleccione una opción válida: ")
-usrs = int(usrs)
+    lista = read_listdir(directory)
+    if len(lista) == 0:
+        print("El directorio no contiene archivos, intente con otro directorio")
+        continue;
+    print("Mostrando lista de archivos:")
+    print("---------------------------------------------------------------------------\n")
+    for l in lista:
+        print(l)
+    print("\n---------------------------------------------------------------------------")
+    print("Si quiere cambiar de directorio, utilizar [<]")
+    opt = input("Seleccione el archivo que quiere enviar (valor por defecto: 1): ")
+    if opt == "<":
+        continue;
+    fileConfirmed = False
+    firstOption = True
+    while not fileConfirmed:
+        if not firstOption:
+            opt = input("Seleccione el archivo que quiere enviar (valor por defecto: 1): ")
+        while opt != "" and (not opt.isnumeric() or int(opt) > len(lista)):
+            opt = input(f"Seleccione una opción válida [1-{len(lista)}] (valor por defecto: 1): ")
+        if opt == "":
+            opt = 1
+        opt = int(opt)
+        filename = os.path.join(directory, lista[opt - 1].partition("-")[len(lista[opt - 1].partition("-")) - 1])
+        filesize = os.path.getsize(filename)
+        print(f"Archivo seleccionado: {filename}, con tamaño: {filesize/(1024*1024)} MB")
+        print("Si quiere cambiar de archivo, utilizar [<]")
+        usrs = input("Seleccione la cantidad de usuarios a los que quiere enviar el archivo (valor por defecto: 1): ")
+        if usrs == "<":
+            firstOption = False
+            continue;
+        while usrs != "" and (not usrs.isnumeric() or int(usrs) < 1):
+            usrs = input("Seleccione una opción válida [min. 1] (valor por defecto: 1): ")
+        if usrs == "":
+            usrs = 1
+        usrs = int(usrs)
+        fileConfirmed = True
+
+    directoryConfirmed = True
+
+
+
+
 # accept connection if there is any
 conns = 0
-cmpltd = usrs
 s = socket.socket()
 s.bind((SERVER_HOST, SERVER_PORT))
-print(f"[*] Listening as {SERVER_HOST}:{SERVER_PORT}")
+print(f"[*] Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
 s.listen(usrs)
 
 
@@ -129,7 +158,7 @@ arrayOfUsers = []
 try:
     while conns < usrs:
         c, address = s.accept()
-        print(f"[+] {address} is connected.")
+        print(f"[+] El usuario {address} se ha conectado {conns+1}/{usrs}")
 
         notification = c.recv(BUFFER_SIZE).decode()
         if notification == "Notificación de inicio":
@@ -144,8 +173,6 @@ try:
     if usrs > 1:
         pool = ThreadPool(usrs)
         pool.map(threaded, arrayOfUsers)
-        pool.close()
-        pool.join()
     print("\n---------------------------------------------------------------------------\n")
     print(f"            Se finalizó la transferencia para los {usrs} usuarios           ")
     print("\n---------------------------------------------------------------------------")
@@ -153,7 +180,19 @@ try:
     if platform == "linux" or platform == "linux2":
         print(f"El archivo de logs se encuentra en:\n {LOGS_FILE}")
     elif platform == "win32":
-        os.startfile(LOGS_FILE)
+        abrirLogs = input("¿Desea abrir el archivo de logs?: (por defecto: N) ")
+        if abrirLogs == "Y":
+            abrirLogs = True
+        else:
+            if abrirLogs != "" and abrirLogs != "N":
+                print(f"Valor no admitido {abrirLogs}, se utilizará valor por defecto")
+            abrirLogs = False
+        if abrirLogs:
+            try:
+                if platform == "win32":
+                    os.startfile(LOGS_FILE)
+            except:
+                print(f"No se pudo abrir el archivo ({LOGS_FILE})")
     exit()
 
 

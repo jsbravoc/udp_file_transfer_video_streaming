@@ -5,6 +5,7 @@ import os
 import tqdm
 import logging
 from datetime import datetime
+from sys import platform
 
 if not os.path.exists(f"{os.getcwd()}/logs/"):
     os.makedirs(f"{os.getcwd()}/logs/")
@@ -28,14 +29,21 @@ BUFFER_SIZE = 4096 # send 4096 bytes each time step
 
 
 # the ip address or hostname of the server, the receiver
-host = '52.186.137.191'
-host = 'localhost'
-# the port, let's use 5001
+print("** Para utilizar valores por defecto, ingresar cadena vacía **")
+host = input("Ingrese la IP del servidor: (por defecto '52.186.137.191') ")
+if host == "":
+    host = "localhost"
+    #host = "52.186.137.191"
+
 port = 9898
-# the name of file we want to send, make sure it exists
-#filename = "Media1.mp4"
-# get the file size
-#filesize = os.path.getsize(filename)
+path = input("Ingrese la ruta donde se quiere guardar el archivo: (por defecto en src/client/) ")
+if path != "":
+    if not path.endswith("/"):
+        path+="/"
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+
 
 # create the client socket
 s = socket.socket()
@@ -50,10 +58,12 @@ s.send("Notificación de inicio".encode())
 received = s.recv(BUFFER_SIZE).decode()
 filename, filesize = received.split(SEPARATOR)
 filename = os.path.basename(filename)
+if path != "":
+    filename = os.path.join(path, filename)
 # convert to integer
 filesize = int(filesize)
 received = 0
-progress = tqdm.tqdm(range(filesize), f"Receiving {filename}", unit="B", unit_scale=True, unit_divisor=BUFFER_SIZE)
+progress = tqdm.tqdm(range(filesize), f"Recibiendo {filename} de {host}", unit="B", unit_scale=True, unit_divisor=BUFFER_SIZE)
 with open(filename, "wb") as f:
     for _ in progress:
         # read 1024 bytes from the socket (receive)
@@ -68,4 +78,44 @@ with open(filename, "wb") as f:
         # write to the file the bytes we just received
         f.write(bytes_read)
         # update the progress bar
+        received+=len(bytes_read)
         progress.update(len(bytes_read))
+
+        logger_tcp.critical(f"Recibiendo {filename} de {host} Tamaño paquete: {BUFFER_SIZE}, "
+                            f"paquete :{round(received/BUFFER_SIZE)}/{round(filesize/BUFFER_SIZE)}" )
+
+
+print("\n---------------------------------------------------------------------------\n")
+print(f"   Se finalizó la transferencia del archivo {os.path.basename(filename)}            ")
+print("\n---------------------------------------------------------------------------")
+
+abrirArchivo = input("¿Desea abrir el archivo (Y/N): (por defecto: N) ")
+if abrirArchivo == "Y":
+    abrirArchivo = True
+else:
+    if abrirArchivo != "" and abrirArchivo != "N":
+        print(f"Valor no admitido {abrirArchivo}, se utilizará valor por defecto")
+    abrirArchivo = False
+
+
+abrirLogs = input("¿Desea abrir el archivo de logs  (Y/N): (por defecto: N) ")
+if abrirLogs == "Y":
+    abrirLogs = True
+else:
+    if abrirLogs != "" and abrirLogs != "N":
+        print(f"Valor no admitido {abrirLogs}, se utilizará valor por defecto")
+    abrirLogs = False
+
+if abrirArchivo:
+    try:
+        if platform == "win32":
+            os.startfile(filename)
+    except:
+        print(f"No se pudo abrir el archivo ({filename})")
+
+if abrirLogs:
+    try:
+        if platform == "win32":
+            os.startfile(LOGS_FILE)
+    except:
+        print(f"No se pudo abrir el archivo ({LOGS_FILE})")
