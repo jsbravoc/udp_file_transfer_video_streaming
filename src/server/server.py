@@ -1,6 +1,8 @@
 ﻿import socket
 import tqdm
 import os
+from _thread import *
+import threading 
 
 # device's IP address
 SERVER_HOST = "0.0.0.0"
@@ -8,7 +10,7 @@ SERVER_PORT = 9898
 # receive 4096 bytes each time
 BUFFER_SIZE = 4096
 SEPARATOR = "<SEPARATOR>"
-
+print_lock = threading.Lock() 
 
 def read_listdir(dir):
     """
@@ -25,7 +27,30 @@ def read_listdir(dir):
         ind += 1
     return archivs
 
-
+def threaded(c):
+    c.send(f"{filename}{SEPARATOR}{filesize}".encode())
+    # start sending the file
+    progress = tqdm.tqdm(range(filesize), f"Sending {filename}", unit="B", unit_scale=True, unit_divisor=1024)
+    with open(filename, "rb") as f:
+        for _ in progress:
+            # read the bytes from the file
+            bytes_read = f.read(BUFFER_SIZE)
+            if not bytes_read:
+                # file transmitting is done
+                break
+            # we use sendall to assure transimission in 
+            # busy networks
+            c.sendall(bytes_read)
+            # update the progress bar
+            progress.update(len(bytes_read))
+            #print_lock.release()
+    # start receiving the file from the socket
+    # and writing to the file stream
+    
+    # close the client socket
+    c.close() 
+    
+    
 # create the server socket
 # TCP socket
 s = socket.socket()
@@ -38,7 +63,6 @@ directory = "archivos"
 # 25 here is the number of unaccepted connections that
 # the system will allow before refusing new connections
 s.listen(25)
-print(f"[*] Listening as {SERVER_HOST}:{SERVER_PORT}")
 
 lista = read_listdir(directory)
 
@@ -55,45 +79,25 @@ usrs = int(input("Seleccione la cantidad de usuarios a los que quiere enviar el 
 # accept connection if there is any
 conns = 0
 cmpltd = usrs
-while True:
-    client_socket, address = s.accept() 
-    # if below code is executed, that means the sender is connected
-    print(f"[+] {address} is connected.")
-    
-    notification = client_socket.recv(BUFFER_SIZE).decode()
-    if notification == "Notificación de inicio":
-        conns += 1
-    else:
-        break
-    # receive the file infos
-    # receive using client socket, not server socket
-    while conns != usrs:
-        if conns == usrs:
+print(f"[*] Listening as {SERVER_HOST}:{SERVER_PORT}")
+try:
+    while True:
+        c, address = s.accept()
+        #print_lock.acquire()
+        # if below code is executed, that means the sender is connected
+        print(f"[+] {address} is connected.")
+        
+        notification = c.recv(BUFFER_SIZE).decode()
+        if notification == "Notificación de inicio":
+            conns += 1
+        else:
             break
     
-    client_socket.send(f"{filename}{SEPARATOR}{filesize}".encode())
+        start_new_thread(threaded, (c,))
+        # receive the file infos
+        # receive using client socket, not server socket
+except KeyboardInterrupt:
+    s.close()
     
-    # start sending the file
-    progress = tqdm.tqdm(range(filesize), f"Sending {filename}", unit="B", unit_scale=True, unit_divisor=1024)
-    with open(filename, "rb") as f:
-        for _ in progress:
-            # read the bytes from the file
-            bytes_read = f.read(BUFFER_SIZE)
-            if not bytes_read:
-                # file transmitting is done
-                break
-            # we use sendall to assure transimission in 
-            # busy networks
-            client_socket.sendall(bytes_read)
-            # update the progress bar
-            progress.update(len(bytes_read))
-    # start receiving the file from the socket
-    # and writing to the file stream
-    
-    # close the client socket
-    client_socket.close()
-    cmpltd -= 1
-    if cmpltd <= 0:
-        break
 # close the server socket
 s.close()
