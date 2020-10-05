@@ -1,16 +1,33 @@
 ﻿import socket
-import tqdm
+from tqdm.auto import tqdm
 import os
 from _thread import *
-import threading 
+from multiprocessing.dummy import Pool as ThreadPool
+from datetime import datetime
+import io
+import shutil
+import logging
+import os
 
-# device's IP address
+if not os.path.exists(f"{os.getcwd()}/logs/"):
+    os.makedirs(f"{os.getcwd()}/logs/")
+
+if not os.path.exists(f"{os.getcwd()}/logs/tqdm"):
+    os.makedirs(f"{os.getcwd()}/logs/tqdm")
+
+logging.basicConfig(filename=f'{os.getcwd()}/logs/{str.replace(str(datetime.now()),":","-")}.log',
+                    format='%(levelname)s %(asctime)s :: %(message)s',
+                    level=logging.DEBUG)
+
+# CONSTANTS
 SERVER_HOST = "0.0.0.0"
 SERVER_PORT = 9898
-# receive 4096 bytes each time
 BUFFER_SIZE = 4096
 SEPARATOR = "<SEPARATOR>"
-print_lock = threading.Lock() 
+DEFAULT_DIRECTORY = "D:\\Downloads"
+
+LOGS_FILE = f"{os.getcwd()}\\logs\\tqdm\\{str.replace(str(datetime.now()),':','-')}.txt"
+STRING_BUFFER = io.StringIO("some initial text data")
 
 def read_listdir(dir):
     """
@@ -21,19 +38,21 @@ def read_listdir(dir):
     """
     listdir = os.listdir(dir)
     ind = 1
-    archivs = list()
+    archivos = list()
     for d in listdir:
         if os.path.isdir(os.path.join(directory, d)):
             # skip directories
             continue
-        archivs.append(f"{ind}-{d}")
+        archivos.append(f"{ind}-{d}")
         ind += 1
-    return archivs
+    return archivos
 
-def threaded(c):
-    c.send(f"{filename}{SEPARATOR}{filesize}".encode())
+
+def threaded(client):
+    client[0].send(f"{filename}{SEPARATOR}{filesize}".encode())
     # start sending the file
-    progress = tqdm.tqdm(range(filesize), f"Sending {filename}", unit="B", unit_scale=True, unit_divisor=1024)
+    progress = tqdm(range(filesize), f"Sending {filename} to {client[1][0]}", unit="B", unit_scale=True,
+                    unit_divisor=BUFFER_SIZE, leave=False, file=STRING_BUFFER)
     with open(filename, "rb") as f:
         for _ in progress:
             # read the bytes from the file
@@ -41,75 +60,87 @@ def threaded(c):
             if not bytes_read:
                 # file transmitting is done
                 break
-            # we use sendall to assure transimission in 
+            # we use sendall to assure transimission in
             # busy networks
-            c.sendall(bytes_read)
+            client[0].sendall(bytes_read)
             # update the progress bar
             progress.update(len(bytes_read))
-            #print_lock.release()
     # start receiving the file from the socket
     # and writing to the file stream
-    
+
     # close the client socket
-    c.close() 
-    
-    
-# create the server socket
-# TCP socket
-s = socket.socket()
+    c.close()
 
-# bind the socket to our local address
-s.bind((SERVER_HOST, SERVER_PORT))
-directory = "D:\\Downloads"
 
-# enabling our server to accept connections
-# 25 here is the number of unaccepted connections that
-# the system will allow before refusing new connections
-s.listen(25)
+print("** Para utilizar valores por defecto, ingresar cadena vacía **")
+directory = str(input(f"Ingrese la dirección del directorio (valor por defecto: {DEFAULT_DIRECTORY}): "))
+if directory == "":
+    print(f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
+    directory = DEFAULT_DIRECTORY
+while not os.path.isdir(directory):
+    print(f"La dirección del directorio {directory} no existe, intente nuevamente")
+    directory = str(input(f"Ingrese la dirección del directorio (valor por defecto: {DEFAULT_DIRECTORY}): "))
+    if directory == "":
+        print(f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
+        directory = DEFAULT_DIRECTORY
+
 
 lista = read_listdir(directory)
-
-print("---------------------------------------------------------------------------\n\n")
+print("Mostrando lista de archivos:")
+print("---------------------------------------------------------------------------\n")
 for l in lista:
     print(l)
-print("\n\n---------------------------------------------------------------------------")
+print("\n---------------------------------------------------------------------------")
 opt = int(input("Seleccione el archivo que quiere enviar: "))
 while opt > len(lista):
     opt = input("Seleccione una opción válida: ")
-filename = os.path.join(directory, lista[opt-1].partition("-")[len(lista[opt-1].partition("-"))-1])
+filename = os.path.join(directory, lista[opt - 1].partition("-")[len(lista[opt - 1].partition("-")) - 1])
 filesize = os.path.getsize(filename)
 usrs = int(input("Seleccione la cantidad de usuarios a los que quiere enviar el archivo: "))
 # accept connection if there is any
 conns = 0
 cmpltd = usrs
+s = socket.socket()
+s.bind((SERVER_HOST, SERVER_PORT))
 print(f"[*] Listening as {SERVER_HOST}:{SERVER_PORT}")
-from multiprocessing.dummy import Pool as ThreadPool
-pool = ThreadPool(usrs)
-arrayOfThreads = [];
+s.listen(usrs)
 
+
+
+arrayOfUsers = []
 
 try:
-        while conns < usrs:
-            c, address = s.accept()
-            #print_lock.acquire()
-            # if below code is executed, that means the sender is connected
-            print(f"[+] {address} is connected.")
+    while conns < usrs:
+        c, address = s.accept()
+        print(f"[+] {address} is connected.")
 
-            notification = c.recv(BUFFER_SIZE).decode()
-            if notification == "Notificación de inicio":
-                conns += 1
-            else:
-                break
+        notification = c.recv(BUFFER_SIZE).decode()
+        if notification == "Notificación de inicio":
+            conns += 1
+        else:
+            break
+        if usrs == 1:
+            threaded([c, address])
+        else:
+            arrayOfUsers.append([c, address])
 
-            arrayOfThreads.append(c);
-            # receive the file infos
-            # receive using client socket, not server socket
-
-        pool.map(threaded, arrayOfThreads)
-
-
-        print("Finalizado")
-        s.close()
+    if usrs > 1:
+        pool = ThreadPool(usrs)
+        pool.map(threaded, arrayOfUsers)
+        pool.close()
+        pool.join()
+    print("\n---------------------------------------------------------------------------\n")
+    print(f"            Se finalizó la transferencia para los {usrs} usuarios           ")
+    print("\n---------------------------------------------------------------------------")
+    s.close()
+    print("\n---------------------------------------------------------------------------\n")
+    print(f"                            Abriendo logs           ")
+    print("\n---------------------------------------------------------------------------")
+    with open (LOGS_FILE, 'a') as fd:
+        STRING_BUFFER.seek (0)
+        shutil.copyfileobj (STRING_BUFFER, fd)
+    os.startfile(LOGS_FILE)
+    exit()
 
 
 except KeyboardInterrupt:
