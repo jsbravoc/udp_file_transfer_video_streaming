@@ -25,7 +25,7 @@ print(f"[+] Conectando a {host}:{port}")
 s.connect((host, port))
 print("[+] Conectado.")
 
-#s.send("Notificación de inicio").encode()
+s.send("Notificación de inicio".encode())
 
 # send the filename and filesize
 #s.send(f"{filename}{SEPARATOR}{filesize}".encode())
