@@ -33,9 +33,7 @@ s = socket.socket()
 # bind the socket to our local address
 s.bind((SERVER_HOST, SERVER_PORT))
 directory = "archivos"
-filename = "Media1.mp4"
-filename = os.path.join(directory, filename)
-filesize = os.path.getsize(filename)
+
 # enabling our server to accept connections
 # 25 here is the number of unaccepted connections that
 # the system will allow before refusing new connections
@@ -48,22 +46,31 @@ print("-------------------------------------------------------------------------
 for l in lista:
     print(l)
 print("\n\n---------------------------------------------------------------------------")
-opt = input("Seleccione el archivo que quiere enviar: ")
+opt = int(input("Seleccione el archivo que quiere enviar: "))
 while opt > len(lista):
     opt = input("Seleccione una opción válida: ")
 filename = os.path.join(directory, lista[opt-1].split("-")[1])
-
-usrs = input("Seleccione la cantidad de usuarios a los que quiere enviar el archivo: ")
+filesize = os.path.getsize(filename)
+usrs = int(input("Seleccione la cantidad de usuarios a los que quiere enviar el archivo: "))
 # accept connection if there is any
 conns = 0
+cmpltd = usrs
 while True:
     client_socket, address = s.accept() 
     # if below code is executed, that means the sender is connected
     print(f"[+] {address} is connected.")
     
     notification = client_socket.recv(BUFFER_SIZE).decode()
+    if notification == "Notificación de inicio":
+        conns += 1
+    else:
+        break
     # receive the file infos
     # receive using client socket, not server socket
+    while conns != usrs:
+        if conns == usrs:
+            break
+    
     client_socket.send(f"{filename}{SEPARATOR}{filesize}".encode())
     
     # start sending the file
@@ -85,5 +92,8 @@ while True:
     
     # close the client socket
     client_socket.close()
+    cmpltd -= 1
+    if cmpltd <= 0:
+        break
 # close the server socket
 s.close()

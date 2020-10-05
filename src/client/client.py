@@ -27,8 +27,7 @@ print("[+] Conectado.")
 
 s.send("Notificación de inicio".encode())
 
-# send the filename and filesize
-#s.send(f"{filename}{SEPARATOR}{filesize}".encode())
+
 received = s.recv(BUFFER_SIZE).decode()
 filename, filesize = received.split(SEPARATOR)
 filename = os.path.basename(filename)
