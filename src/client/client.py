@@ -76,7 +76,7 @@ if path != "":
     filename = os.path.join(path, filename)
 # convert to integer
 filesize = int(filesize)
-hash_rcvd = s.recv(BUFFER_SIZE).decode()
+#hash_rcvd = s.recv(BUFFER_SIZE).decode()
 received = 0
 progress = tqdm.tqdm(range(filesize), f"Recibiendo {filename} de {host}", unit="B", unit_scale=True,
                      unit_divisor=1024)
