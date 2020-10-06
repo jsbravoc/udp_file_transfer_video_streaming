@@ -83,47 +83,52 @@ def read_listdir(dir):
 
 def threaded(client):
     cached_file = get_cached_file(filename)
-    if CLONE_FILE:
-        file = copy.deepcopy(cached_file)
-    else:
-        file = cached_file
+    try:
+        if CLONE_FILE:
+            file = copy.deepcopy(cached_file)
+        else:
+            file = cached_file
 
-    logger_tcp.info(
-        f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}")
-    client[0].send(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode())
-    # start sending the file
-    progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
-                    unit_divisor=1024)
-    sended = 0
+        logger_tcp.info(
+            f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}")
+        client[0].send(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode())
+        # start sending the file
+        progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
+                        unit_divisor=1024)
+        sended = 0
 
-    file.seek(0)
-    bytes_read = file.read(BUFFER_SIZE)
+        file.seek(0)
+        bytes_read = file.read(BUFFER_SIZE)
 
-    while bytes_read:
-        for _ in progress:
-            # read the bytes from the file
-            if sended == filesize:
-                # file transmitting is done
-                progress.n = filesize
-                progress.refresh()
-                logger_progress.info(str(progress))
-                client[0].close()
-                logger_connections.info(f"El usuario {address} se ha desconectado")
-                progress.close()
-                break
-            # we use sendall to assure transimission in
-            # busy networks
-            client[0].sendall(bytes_read)
-            # update the progress bar
-            sended += len(bytes_read)
-            progress.update(len(bytes_read))
-            if not IGNORE_PACKET_COUNT:
-                logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                 f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
-            if not IGNORE_BYTES_COUNT:
-                logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                       f"bytes enviados :{sended}/{filesize}")
-            bytes_read = file.read(BUFFER_SIZE)
+        while bytes_read:
+            for _ in progress:
+                # read the bytes from the file
+                if sended == filesize:
+                    # file transmitting is done
+                    progress.n = filesize
+                    progress.refresh()
+                    logger_progress.info(str(progress))
+                    client[0].close()
+                    logger_connections.info(f"El usuario {address} se ha desconectado")
+                    progress.close()
+                    break
+                # we use sendall to assure transimission in
+                # busy networks
+                client[0].sendall(bytes_read)
+                # update the progress bar
+                sended += len(bytes_read)
+                progress.update(len(bytes_read))
+                if not IGNORE_PACKET_COUNT:
+                    logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                    f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+                if not IGNORE_BYTES_COUNT:
+                    logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                        f"bytes enviados :{sended}/{filesize}")
+                bytes_read = file.read(BUFFER_SIZE)
+    except Exception as e:
+        print(f"[ERROR]: {e}")
+        logger_connections.exception(e)
+        client[0].close()
 
 
 
