@@ -58,6 +58,7 @@ IGNORE_BYTES_COUNT = config['ignoreBytesCount']
 IGNORE_CLIENT_LIMIT = config['ignoreClientLimit']
 CLONE_FILE = config['cloneFile']
 DISABLE_PROGRESS_BAR = config['disableProgressBar']
+USE_RAM = config['useRam']
 
 if HASHING_METHOD != "sha256":
     print(f"Método de hashing {HASHING_METHOD} no soportado actualmente, utilizando sha256")
@@ -262,8 +263,15 @@ try:
             arrayOfUsers.append([c, address])
 
     if usrs > 1:
-        pool = ThreadPool(usrs)
-        pool.map(threaded, arrayOfUsers)
+        if usrs > 25:
+            for i in range(0, int(math.ceil(usrs/25))):
+                pool = ThreadPool(25)
+                pool.map(threaded, arrayOfUsers[i:(i+25)])
+                pool.join()
+
+        else:
+            pool = ThreadPool(usrs)
+            pool.map(threaded, arrayOfUsers)
     # endregion
     # region POST EJECUCIÓN
     print("\n---------------------------------------------------------------------------\n")
