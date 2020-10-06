@@ -77,7 +77,7 @@ def threaded(client):
         for _ in progress:
             # read the bytes from the file
             bytes_read = f.read(BUFFER_SIZE)
-            if sended == filesize and not bytes_read:
+            if sended == filesize:
                 # file transmitting is done
                 progress.n = filesize
                 progress.refresh()

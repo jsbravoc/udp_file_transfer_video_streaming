@@ -82,7 +82,7 @@ with open(filename, "wb") as f:
     for _ in progress:
         # read 1024 bytes from the socket (receive)
         bytes_read = s.recv(BUFFER_SIZE)
-        if received == filesize and not bytes_read:
+        if received == filesize or not bytes_read:
             progress.n = filesize
             progress.refresh()
             logger_progress.info(str(progress))
