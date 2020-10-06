@@ -68,7 +68,7 @@ def read_listdir(dir):
 
 def threaded(client):
     client[0].send(f"{filename}{SEPARATOR}{filesize}".encode())
-    client[0].send(f_hash.encode())
+    client[0].sendall(f_hash.encode())
     # start sending the file
     progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
                     unit_divisor=1024)
@@ -102,7 +102,7 @@ def calculate_hash(file):
         while len(fb)>0:
             file_hash.update(fb)
             fb = f.read(BUFFER_SIZE)
-    return file_hash.hexdigest().decode()
+    return file_hash.hexdigest()
     
 print("** Para utilizar valores por defecto, ingresar cadena vacía **")
 directoryConfirmed = False
