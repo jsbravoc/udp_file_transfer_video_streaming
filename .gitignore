@@ -1,0 +1,10 @@
+src/client/logs/
+src/server/logs/
+**/venv
+.idea/
+logs/
+lab3_key_converted.ppk
+*.mp4
+*.pdf
+*.docx
+**/__pycache__
