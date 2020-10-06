@@ -58,7 +58,6 @@ IGNORE_BYTES_COUNT = config['ignoreBytesCount']
 IGNORE_CLIENT_LIMIT = config['ignoreClientLimit']
 CLONE_FILE = config['cloneFile']
 DISABLE_PROGRESS_BAR = config['disableProgressBar']
-USE_RAM = config['useRam']
 
 if HASHING_METHOD != "sha256":
     print(f"Método de hashing {HASHING_METHOD} no soportado actualmente, utilizando sha256")
