@@ -4,19 +4,10 @@ import os
 import socket
 from datetime import datetime
 from sys import platform
-import hashlib
 
 import clientconfig as cfg
 import tqdm
 
-def calculate_hash(file):
-    file_hash = hashlib.sha256()
-    with open(file, 'rb') as f:
-        fb = f.read(BUFFER_SIZE)
-        while len(fb)>0:
-            file_hash.update(fb)
-            fb = f.read(BUFFER_SIZE)
-    return file_hash.hexdigest()
 if not os.path.exists(f"{os.getcwd()}/logs/"):
     os.makedirs(f"{os.getcwd()}/logs/")
 
@@ -70,7 +61,8 @@ received = s.recv(BUFFER_SIZE).decode()
 filename, filesize = received.split(SEPARATOR)
 filename = os.path.basename(filename)
 
-file_hash = s.recv(BUFFER_SIZE)
+file_hash = s.recv(BUFFER_SIZE).decode()
+print(f"file hash = {file_hash}")
 if path != "":
     filename = os.path.join(path, filename)
 # convert to integer
@@ -102,12 +94,6 @@ print("\n-----------------------------------------------------------------------
 print(f"   Se finalizó la transferencia del archivo {os.path.basename(filename)}            ")
 print("\n---------------------------------------------------------------------------")
 
-print("Calculando hash del archivo...")
-local_hash = calculate_hash(filename)
-if local_hash == file_hash:
-    print("El hash calculado del archivo es igual al recibido")
-else:
-    print("El hash del archivo no coincide con el recibido")
 abrirArchivo = input("¿Desea abrir el archivo (Y/N): (por defecto: N) ")
 if abrirArchivo == "Y":
     abrirArchivo = True
