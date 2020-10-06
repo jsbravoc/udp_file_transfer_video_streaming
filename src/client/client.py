@@ -16,7 +16,7 @@ def calculate_hash(file):
         while len(fb)>0:
             file_hash.update(fb)
             fb = f.read(BUFFER_SIZE)
-    return file_hash.digest()
+    return file_hash.hexdigest()
 if not os.path.exists(f"{os.getcwd()}/logs/"):
     os.makedirs(f"{os.getcwd()}/logs/")
 
@@ -70,7 +70,7 @@ received = s.recv(BUFFER_SIZE).decode()
 filename, filesize = received.split(SEPARATOR)
 filename = os.path.basename(filename)
 
-file_hash = s.recv(BUFFER_SIZE)
+file_hash = s.recv(BUFFER_SIZE).decode()
 if path != "":
     filename = os.path.join(path, filename)
 # convert to integer
