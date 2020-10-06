@@ -54,8 +54,10 @@ if host == "":
 
 port = config['defaultPort']
 path = input(f"Ingrese la ruta donde se quiere guardar el archivo: (por defecto en {DEFAULT_DIR}) ")
-if path == "":
+if path == "" and DEFAULT_DIR != "/src/client/" :
     path = DEFAULT_DIR
+elif path == "" and DEFAULT_DIR == "/src/client/":
+    path = ""    
 else:
     if not path.endswith("/"):
         path += "/"
