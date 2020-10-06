@@ -1,4 +1,5 @@
-﻿import hashlib
+﻿import copy
+import hashlib
 import logging
 import os
 import socket
@@ -9,6 +10,8 @@ from sys import platform
 import hashlib
 import serverconfig as cfg
 from tqdm.auto import tqdm
+from functools import lru_cache
+import io
 
 # Si no existe la carpeta de logs, entonces se crea
 if not os.path.exists(f"{os.getcwd()}/logs/"):
@@ -49,6 +52,8 @@ HASHING_METHOD = config['hashingMethod']
 IGNORE_PACKET_COUNT = config['ignorePacketCount']
 IGNORE_BYTES_COUNT = config['ignoreBytesCount']
 IGNORE_CLIENT_LIMIT = config['ignoreClientLimit']
+CLONE_FILE = config['cloneFile']
+
 
 if HASHING_METHOD != "sha256":
     print(f"Método de hashing {HASHING_METHOD} no soportado actualmente, utilizando sha256")
@@ -77,23 +82,26 @@ def read_listdir(dir):
 
 
 def threaded(client):
-    hasher = hashlib.sha256()
-    with open(filename, 'rb') as afile:
-        buf = afile.read(BLOCKSIZE)
-        while len(buf) > 0:
-            hasher.update(buf)
-            buf = afile.read(BLOCKSIZE)
-    hash = hasher.hexdigest()
-    logger_tcp.info(f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{hash}")
-    client[0].send(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{hash}".encode())
+    cached_file = get_cached_file(filename)
+    if CLONE_FILE:
+        file = copy.deepcopy(cached_file)
+    else:
+        file = cached_file
+
+    logger_tcp.info(
+        f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}")
+    client[0].send(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode())
     # start sending the file
     progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
                     unit_divisor=1024)
     sended = 0
-    with open(filename, "rb") as f:
+
+    file.seek(0)
+    bytes_read = file.read(BUFFER_SIZE)
+
+    while bytes_read:
         for _ in progress:
             # read the bytes from the file
-            bytes_read = f.read(BUFFER_SIZE)
             if sended == filesize:
                 # file transmitting is done
                 progress.n = filesize
@@ -115,6 +123,8 @@ def threaded(client):
             if not IGNORE_BYTES_COUNT:
                 logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
                                        f"bytes enviados :{sended}/{filesize}")
+            bytes_read = file.read(BUFFER_SIZE)
+
 
 
 # region PARÁMETROS DEL SERVIDOR
@@ -175,6 +185,25 @@ while not directoryConfirmed:
 
 # endregion
 
+# region MANIPULACIÓN DE ARCHIVO
+hasher = hashlib.sha256()
+with open(filename, 'rb') as afile:
+    buf = afile.read(BLOCKSIZE)
+    while len(buf) > 0:
+        hasher.update(buf)
+        buf = afile.read(BLOCKSIZE)
+FILE_HASH = hasher.hexdigest()
+
+
+@lru_cache(maxsize=None, typed=True)  # typed will cache as per different arg.
+def get_cached_file(filename):
+    m = io.BytesIO()
+    with open(filename, 'rb') as f:
+        m.write(f.read())
+    return m
+
+
+# endregion
 
 conns = 0
 logger_connections.info(f"Escuchando desde {SERVER_HOST}:{SERVER_PORT}")

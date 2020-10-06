@@ -6,7 +6,8 @@ ServerConfig = {
         "hashingMethod": "sha256",
         "ignorePacketCount": True,
         "ignoreBytesCount": True,
-        "ignoreClientLimit": False
+        "ignoreClientLimit": False,
+        "cloneFile": True
     },
     "jsbravoc": {
             "defaultIP": "0.0.0.0",
@@ -15,6 +16,7 @@ ServerConfig = {
             "hashingMethod": "sha256",
             "ignorePacketCount": True,
             "ignoreBytesCount": True,
-            "ignoreClientLimit": False
+            "ignoreClientLimit": False,
+            "cloneFile": True
         }
 }
