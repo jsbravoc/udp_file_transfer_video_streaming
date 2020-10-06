@@ -24,11 +24,13 @@ BLOCKSIZE = 65536
 # region CARGA DE CONFIGURACIÓN
 logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
                                                   encoding='utf-8', mode='a+')],
-                    format="%(asctime)s %(name)s:%(levelname)s:%(message)s",
-                    datefmt="%F %A %T",
+                    format="%(asctime)s {%(name)s} [%(levelname)s] %(message)s",
+                    datefmt="%F %T",
                     level=logging.INFO)
+logger_connections = logging.getLogger("Connection")
 logger_progress = logging.getLogger("Progress")
 logger_tcp = logging.getLogger("TCP_Packets")
+logger_tcp_bytes = logging.getLogger("TCP_Bytes")
 
 print("------------Cargar configuraciones por defecto------------")
 with open("serverconfig.py", 'r') as f:
@@ -45,8 +47,11 @@ SERVER_PORT = config['defaultPort']
 DEFAULT_DIRECTORY = config['defaultDir']
 HASHING_METHOD = config['hashingMethod']
 IGNORE_PACKET_COUNT = config['ignorePacketCount']
+IGNORE_BYTES_COUNT = config['ignoreBytesCount']
+IGNORE_CLIENT_LIMIT = config['ignoreClientLimit']
+
 if HASHING_METHOD != "sha256":
-    print(f"Método de hashing {HASHING_METHOD} no soportado actualmente, utilizando sha256");
+    print(f"Método de hashing {HASHING_METHOD} no soportado actualmente, utilizando sha256")
 
 
 # endregion
@@ -79,8 +84,8 @@ def threaded(client):
             hasher.update(buf)
             buf = afile.read(BLOCKSIZE)
     hash = hasher.hexdigest()
-    logger_tcp.critical(f"Enviando HEADER al Cliente: {filename}{SEPARATOR}{filesize}{SEPARATOR}{hash}")
-    client[0].send(f"{filename}{SEPARATOR}{filesize}{SEPARATOR}{hash}".encode())
+    logger_tcp.info(f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{hash}")
+    client[0].send(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{hash}".encode())
     # start sending the file
     progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
                     unit_divisor=1024)
@@ -95,6 +100,7 @@ def threaded(client):
                 progress.refresh()
                 logger_progress.info(str(progress))
                 client[0].close()
+                logger_connections.info(f"El usuario {address} se ha desconectado")
                 progress.close()
                 break
             # we use sendall to assure transimission in
@@ -104,8 +110,11 @@ def threaded(client):
             sended += len(bytes_read)
             progress.update(len(bytes_read))
             if not IGNORE_PACKET_COUNT:
-                logger_tcp.critical(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                    f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+                logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                 f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+            if not IGNORE_BYTES_COUNT:
+                logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                       f"bytes enviados :{sended}/{filesize}")
 
 
 # region PARÁMETROS DEL SERVIDOR
@@ -161,15 +170,25 @@ while not directoryConfirmed:
         usrs = int(usrs)
         fileConfirmed = True
     directoryConfirmed = True
+    logger_progress.info(f"Se enviará el siguiente archivo: {os.path.basename(filename)},"
+                         f" con tamaño: {filesize / (1024 * 1024)} MB")
 
 # endregion
 
 
 conns = 0
+logger_connections.info(f"Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
 s = socket.socket()
 s.bind((SERVER_HOST, SERVER_PORT))
 print(f"[*] Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
-s.listen(usrs)
+logger_connections.info(f"Se espera la conexión de {'un' if usrs == 1 else usrs} "
+                        f"{'usuario' if usrs == 1 else 'usuarios'} para empezar la transmisión")
+if not IGNORE_CLIENT_LIMIT:
+    logger_connections.info(f"Máximo número de clientes aceptados: {usrs}")
+    s.listen(usrs)
+else:
+    logger_connections.info(f"Máximo número de clientes aceptados {128}")
+    s.listen(128)
 
 arrayOfUsers = []
 
@@ -177,7 +196,7 @@ try:
     # region CONEXIÓN CLIENTES
     while conns < usrs:
         c, address = s.accept()
-        logger_tcp.critical(f"El usuario {address} se ha conectado {conns + 1}/{usrs}")
+        logger_connections.info(f"El usuario {address} se ha conectado {conns + 1}/{usrs}")
         print(f"[+] El usuario {address} se ha conectado {conns + 1}/{usrs}")
 
         notification = c.recv(BUFFER_SIZE).decode()
@@ -197,7 +216,8 @@ try:
     # region POST EJECUCIÓN
     print("\n---------------------------------------------------------------------------\n")
     print(
-        f"        Se finalizó la transferencia para {'el' if usrs == 1 else 'los'} {usrs} {'usuario' if usrs == 1 else 'usuarios'}           ")
+        f"        Se finalizó la transferencia para {'el' if usrs == 1 else 'los'} {usrs} "
+        f"{'usuario' if usrs == 1 else 'usuarios'}           ")
     print("\n---------------------------------------------------------------------------")
     s.close()
     if platform == "linux" or platform == "linux2":

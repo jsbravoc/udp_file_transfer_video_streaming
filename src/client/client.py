@@ -38,8 +38,8 @@ DEFAULT_DIR = config["defaultDir"]
 # region LOGGING
 logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
                                                   encoding='utf-8', mode='a+')],
-                    format="%(asctime)s %(name)s:%(levelname)s:%(message)s",
-                    datefmt="%F %A %T",
+                    format="%(asctime)s {%(name)s} [%(levelname)s] %(message)s",
+                    datefmt="%F %T",
                     level=logging.INFO)
 logger_progress = logging.getLogger("Progress")
 logger_tcp = logging.getLogger("TCP_Packets")
@@ -82,7 +82,6 @@ s.send("Notificación de inicio".encode())
 # region RECEPCIÓN ARCHIVO
 received = s.recv(BUFFER_SIZE).decode()
 filename, filesize, hashServer = received.split(SEPARATOR)
-filename = os.path.basename(filename)
 if path != "":
     filename = os.path.join(path, filename)
 filesize = int(filesize)
