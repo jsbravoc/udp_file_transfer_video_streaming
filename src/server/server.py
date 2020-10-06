@@ -1,4 +1,4 @@
-﻿import io
+﻿import hashlib
 import logging
 import os
 import socket
@@ -10,14 +10,18 @@ from sys import platform
 import serverconfig as cfg
 from tqdm.auto import tqdm
 
+# Si no existe la carpeta de logs, entonces se crea
 if not os.path.exists(f"{os.getcwd()}/logs/"):
     os.makedirs(f"{os.getcwd()}/logs/")
 
-if not os.path.exists(f"{os.getcwd()}/logs/tqdm"):
-    os.makedirs(f"{os.getcwd()}/logs/tqdm")
-
+# region CONSTANTES
 LOGS_FILE = f"{os.getcwd()}\\logs\\{str.replace(str(datetime.now()), ':', '-')}.log"
+BUFFER_SIZE = 4096
+SEPARATOR = "<SEPARATOR>"
+BLOCKSIZE = 65536
+# endregion
 
+# region CARGA DE CONFIGURACIÓN
 logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
                                                   encoding='utf-8', mode='a+')],
                     format="%(asctime)s %(name)s:%(levelname)s:%(message)s",
@@ -36,14 +40,16 @@ if config not in cfg.ServerConfig:
 else:
     config = cfg.ServerConfig[config]
 
-# CONSTANTS
 SERVER_HOST = config['defaultIP']
 SERVER_PORT = config['defaultPort']
-BUFFER_SIZE = 4096
-SEPARATOR = "<SEPARATOR>"
 DEFAULT_DIRECTORY = config['defaultDir']
+HASHING_METHOD = config['hashingMethod']
+IGNORE_PACKET_COUNT = config['ignorePacketCount']
+if HASHING_METHOD != "sha256":
+    print(f"Método de hashing {HASHING_METHOD} no soportado actualmente, utilizando sha256");
 
-STRING_BUFFER = io.StringIO("")
+
+# endregion
 
 
 def read_listdir(dir):
@@ -66,7 +72,15 @@ def read_listdir(dir):
 
 
 def threaded(client):
-    client[0].send(f"{filename}{SEPARATOR}{filesize}".encode())
+    hasher = hashlib.sha256()
+    with open(filename, 'rb') as afile:
+        buf = afile.read(BLOCKSIZE)
+        while len(buf) > 0:
+            hasher.update(buf)
+            buf = afile.read(BLOCKSIZE)
+    hash = hasher.hexdigest()
+    logger_tcp.critical(f"Enviando HEADER al Cliente: {filename}{SEPARATOR}{filesize}{SEPARATOR}{hash}")
+    client[0].send(f"{filename}{SEPARATOR}{filesize}{SEPARATOR}{hash}".encode())
     # start sending the file
     progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
                     unit_divisor=BUFFER_SIZE)
@@ -89,10 +103,12 @@ def threaded(client):
             # update the progress bar
             sended += len(bytes_read)
             progress.update(len(bytes_read))
-            logger_tcp.critical(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+            if not IGNORE_PACKET_COUNT:
+                logger_tcp.critical(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                    f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
 
 
+# region PARÁMETROS DEL SERVIDOR
 print("** Para utilizar valores por defecto, ingresar cadena vacía **")
 directoryConfirmed = False
 while not directoryConfirmed:
@@ -144,10 +160,11 @@ while not directoryConfirmed:
             usrs = 1
         usrs = int(usrs)
         fileConfirmed = True
-
     directoryConfirmed = True
 
-# accept connection if there is any
+# endregion
+
+
 conns = 0
 s = socket.socket()
 s.bind((SERVER_HOST, SERVER_PORT))
@@ -157,8 +174,10 @@ s.listen(usrs)
 arrayOfUsers = []
 
 try:
+    # region CONEXIÓN CLIENTES
     while conns < usrs:
         c, address = s.accept()
+        logger_tcp.critical(f"El usuario {address} se ha conectado {conns + 1}/{usrs}")
         print(f"[+] El usuario {address} se ha conectado {conns + 1}/{usrs}")
 
         notification = c.recv(BUFFER_SIZE).decode()
@@ -174,8 +193,11 @@ try:
     if usrs > 1:
         pool = ThreadPool(usrs)
         pool.map(threaded, arrayOfUsers)
+    # endregion
+    # region POST EJECUCIÓN
     print("\n---------------------------------------------------------------------------\n")
-    print(f"            Se finalizó la transferencia para los {usrs} usuarios           ")
+    print(
+        f"        Se finalizó la transferencia para {'el' if usrs == 1 else 'los'} {usrs} {'usuario' if usrs == 1 else 'usuarios'}           ")
     print("\n---------------------------------------------------------------------------")
     s.close()
     if platform == "linux" or platform == "linux2":
@@ -192,11 +214,12 @@ try:
             try:
                 if platform == "win32":
                     os.startfile(LOGS_FILE)
-            except:
-                print(f"No se pudo abrir el archivo ({LOGS_FILE})")
+            except Exception as e:
+                print(f"[ERROR] No se pudo abrir el archivo ({LOGS_FILE}), {e}")
     exit()
+    # endregion
 
 
-
-except:
+except Exception as e:
+    print(e)
     s.close()
