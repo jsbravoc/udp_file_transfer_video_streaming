@@ -102,7 +102,7 @@ def calculate_hash(file):
         while len(fb)>0:
             file_hash.update(fb)
             fb = f.read(BUFFER_SIZE)
-    return file_hash.hex()
+    return file_hash.digest()
     
 print("** Para utilizar valores por defecto, ingresar cadena vacía **")
 directoryConfirmed = False
