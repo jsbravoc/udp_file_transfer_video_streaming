@@ -6,7 +6,7 @@ from _thread import *
 from datetime import datetime
 from multiprocessing.dummy import Pool as ThreadPool
 from sys import platform
-
+import hashlib
 import serverconfig as cfg
 from tqdm.auto import tqdm
 
@@ -67,6 +67,7 @@ def read_listdir(dir):
 
 def threaded(client):
     client[0].send(f"{filename}{SEPARATOR}{filesize}".encode())
+    client[0].send(file_hashed.encode())
     # start sending the file
     progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
                     unit_divisor=1024)
@@ -91,7 +92,16 @@ def threaded(client):
             progress.update(len(bytes_read))
             logger_tcp.critical(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
                                 f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
-
+def calculate_hash(file):
+    with open(file, 'rb') as f:
+        hasher = hashlib.sha256()
+        buf = f.read(BUFFER_SIZE)
+        while True:
+            hasher.update(buf)
+            buf = f.read(BUFFER_SIZE)
+            if not buf:
+                break
+    return hasher.hexdigest()
 
 print("** Para utilizar valores por defecto, ingresar cadena vacía **")
 directoryConfirmed = False
@@ -147,6 +157,7 @@ while not directoryConfirmed:
 
     directoryConfirmed = True
 
+file_hashed = calculate_hash(filename)
 # accept connection if there is any
 conns = 0
 s = socket.socket()

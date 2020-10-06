@@ -4,7 +4,7 @@ import os
 import socket
 from datetime import datetime
 from sys import platform
-
+import hashlib
 import clientconfig as cfg
 import tqdm
 
@@ -23,6 +23,18 @@ logger_tcp = logging.getLogger("TCP_Packets")
 
 SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 4096  # send 4096 bytes each time step
+
+def calculate_hash(file):
+    with open(file, 'rb') as f:
+        hasher = hashlib.sha256()
+        buf = f.read(BUFFER_SIZE)
+        while True:
+            hasher.update(buf)
+            buf = f.read(BUFFER_SIZE)
+            if not buf:
+                break
+    return hasher.hexdigest()
+
 
 print("------------Cargar configuraciones por defecto------------")
 with open("clientconfig.py", 'r') as f:
@@ -64,6 +76,7 @@ if path != "":
     filename = os.path.join(path, filename)
 # convert to integer
 filesize = int(filesize)
+hash_rcvd = s.recv(BUFFER_SIZE).decode()
 received = 0
 progress = tqdm.tqdm(range(filesize), f"Recibiendo {filename} de {host}", unit="B", unit_scale=True,
                      unit_divisor=1024)
