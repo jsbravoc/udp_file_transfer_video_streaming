@@ -38,6 +38,7 @@ logger_connections = logging.getLogger("Connection")
 logger_progress = logging.getLogger("Progress")
 logger_tcp = logging.getLogger("TCP_Packets")
 logger_tcp_bytes = logging.getLogger("TCP_Bytes")
+logger_threads = logging.getLogger("Threads")
 
 print("------------Cargar configuraciones por defecto------------")
 try:
@@ -61,7 +62,7 @@ IGNORE_BYTES_COUNT = config['ignoreBytesCount']
 IGNORE_CLIENT_LIMIT = config['ignoreClientLimit']
 CLONE_FILE = config['cloneFile']
 DISABLE_PROGRESS_BAR = config['disableProgressBar']
-
+EXCLUDE_MESSAGE_COMPARISON = config['excludeMessageComparison']
 if HASHING_METHOD != "sha256":
     print(f"Método de hashing {HASHING_METHOD} no soportado actualmente, utilizando sha256")
 
@@ -88,57 +89,28 @@ def read_listdir(dir):
     return archivos
 
 def multiThreaded():
-    client = threadQueue.get()
-    cached_file = get_cached_file(filename)
-    try:
-        if CLONE_FILE:
-            file = copy.deepcopy(cached_file)
-        else:
-            file = cached_file
+    while True:
+        client = threadQueue.get()
+        logger_threads.info(f"Thread empezando a atender a {client[1]}")
+        cached_file = get_cached_file(filename)
+        try:
+            if CLONE_FILE:
+                file = copy.deepcopy(cached_file)
+            else:
+                file = cached_file
 
-        logger_tcp.info(
-            f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}")
-        client[0].send(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode())
-        sended = 0
-        initialTime = datetime.now()
-        file.seek(0)
-        bytes_read = file.read(BUFFER_SIZE)
+            logger_tcp.info(
+                f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}")
+            client[0].send(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode())
+            sended = 0
+            initialTime = datetime.now()
+            file.seek(0)
+            bytes_read = file.read(BUFFER_SIZE)
 
-        if DISABLE_PROGRESS_BAR:
-            while bytes_read:
-                client[0].sendall(bytes_read)
-                sended += len(bytes_read)
-                if not IGNORE_PACKET_COUNT:
-                    logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                     f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
-                if not IGNORE_BYTES_COUNT:
-                    logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                           f"bytes enviados :{sended}/{filesize}")
-                bytes_read = file.read(BUFFER_SIZE)
-            now = datetime.now()
-            client[0].close()
-            logger_progress.info(f"Enviando {filename} a {client[1][0]}: 100%|██████████| "
-                                 f"{round(filesize / (1024 * 1024), 2)}MB/{round(filesize / (1024 * 1024), 2)}MB "
-                                 f"[{str(math.floor((now - initialTime).total_seconds() / 60)).zfill(2)}:"
-                                 f"{str(math.ceil((now - initialTime).total_seconds()) % 60).zfill(2)}]")
-
-        else:
-            progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
-                            unit_divisor=BUFFER_SIZE)
-
-            while bytes_read:
-                for _ in progress:
-                    if sended == filesize:
-                        progress.n = filesize
-                        progress.refresh()
-                        logger_progress.info(str(progress))
-                        client[0].close()
-                        logger_connections.info(f"El usuario {address} se ha desconectado")
-                        progress.close()
-                        break
+            if DISABLE_PROGRESS_BAR:
+                while bytes_read:
                     client[0].sendall(bytes_read)
                     sended += len(bytes_read)
-                    progress.update(len(bytes_read))
                     if not IGNORE_PACKET_COUNT:
                         logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
                                          f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
@@ -146,14 +118,48 @@ def multiThreaded():
                         logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
                                                f"bytes enviados :{sended}/{filesize}")
                     bytes_read = file.read(BUFFER_SIZE)
+                now = datetime.now()
+                client[0].close()
+                logger_progress.info(f"Enviando {filename} a {client[1][0]}: 100%|██████████| "
+                                     f"{round(filesize / (1024 * 1024), 2)}MB/{round(filesize / (1024 * 1024), 2)}MB "
+                                     f"[{str(math.floor((now - initialTime).total_seconds() / 60)).zfill(2)}:"
+                                     f"{str(math.ceil((now - initialTime).total_seconds()) % 60).zfill(2)}]")
 
-    except Exception as e:
-        print(f"[ERROR]: {e}")
-        logger_connections.exception(e)
-        client[0].close()
-    threadQueue.task_done()
+            else:
+                progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
+                                unit_divisor=BUFFER_SIZE)
+
+                while bytes_read:
+                    for _ in progress:
+                        if sended == filesize:
+                            progress.n = filesize
+                            progress.refresh()
+                            logger_progress.info(str(progress))
+                            client[0].close()
+                            logger_connections.info(f"El usuario {address} se ha desconectado")
+                            progress.close()
+                            break
+                        client[0].sendall(bytes_read)
+                        sended += len(bytes_read)
+                        progress.update(len(bytes_read))
+                        if not IGNORE_PACKET_COUNT:
+                            logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                             f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+                        if not IGNORE_BYTES_COUNT:
+                            logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                                   f"bytes enviados :{sended}/{filesize}")
+                        bytes_read = file.read(BUFFER_SIZE)
+
+        except Exception as e:
+            print(f"[ERROR]: {e}")
+            logger_connections.exception(e)
+            client[0].close()
+        threadQueue.task_done()
+        logger_threads.info(f"Thread finalizó de atender a {client[0]}")
+
 
 def threaded(client):
+    logger_threads.info(f"Thread empezando a atender a {client[1]}")
     cached_file = get_cached_file(filename)
     try:
         if CLONE_FILE:
@@ -216,7 +222,7 @@ def threaded(client):
         print(f"[ERROR]: {e}")
         logger_connections.exception(e)
         client[0].close()
-
+    logger_threads.info(f"Thread finalizó de atender a {client[0]}")
 
 # region PARÁMETROS DEL SERVIDOR
 print("** Para utilizar valores por defecto, ingresar cadena vacía **")
@@ -318,12 +324,14 @@ try:
         c, address = s.accept()
         logger_connections.info(f"El usuario {address} se ha conectado {conns + 1}/{usrs}")
         print(f"[+] El usuario {address} se ha conectado {conns + 1}/{usrs}")
-
-        notification = c.recv(BUFFER_SIZE).decode()
-        if notification == "Notificación de inicio":
-            conns += 1
+        notification = c.recv(BUFFER_SIZE)
+        if not EXCLUDE_MESSAGE_COMPARISON:
+            if notification.decode() == "Notificación de inicio":
+                conns += 1
+            else:
+                break
         else:
-            break
+            conns += 1
         if usrs == 1:
             threaded([c, address])
         else:
@@ -332,13 +340,16 @@ try:
     if usrs > 1:
         if usrs > 25:
             threadQueue = queue.Queue()
-            for i in range(25):
-                t = Thread(target=multiThreaded)
-                t.daemon = True
-                t.start()
 
             for j in range(len(arrayOfUsers)):
                 threadQueue.put(arrayOfUsers[j])
+
+            for i in range(25):
+                t = Thread(target=multiThreaded, daemon=True)
+                t.start()
+
+            threadQueue.join()
+
         else:
             pool = ThreadPool(usrs)
             pool.map(threaded, arrayOfUsers)
