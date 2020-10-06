@@ -70,7 +70,7 @@ received = s.recv(BUFFER_SIZE).decode()
 filename, filesize = received.split(SEPARATOR)
 filename = os.path.basename(filename)
 
-file_hash = s.recv(100000).decode()
+file_hash = s.recv(BUFFER_SIZE).decode()
 if path != "":
     filename = os.path.join(path, filename)
 # convert to integer
