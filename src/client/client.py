@@ -5,7 +5,7 @@ import os
 import socket
 from datetime import datetime
 from sys import platform
-
+import hashlib
 import clientconfig as cfg
 import tqdm
 
@@ -84,9 +84,10 @@ filename = os.path.basename(filename)
 if path != "":
     filename = os.path.join(path, filename)
 filesize = int(filesize)
+#hash_rcvd = s.recv(BUFFER_SIZE).decode()
 received = 0
 progress = tqdm.tqdm(range(filesize), f"Recibiendo {filename} de {host}", unit="B", unit_scale=True,
-                     unit_divisor=BUFFER_SIZE)
+                     unit_divisor=1024)
 with open(filename, "wb") as f:
     for _ in progress:
         bytes_read = s.recv(BUFFER_SIZE)

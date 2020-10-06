@@ -6,7 +6,7 @@ from _thread import *
 from datetime import datetime
 from multiprocessing.dummy import Pool as ThreadPool
 from sys import platform
-
+import hashlib
 import serverconfig as cfg
 from tqdm.auto import tqdm
 
@@ -83,7 +83,7 @@ def threaded(client):
     client[0].send(f"{filename}{SEPARATOR}{filesize}{SEPARATOR}{hash}".encode())
     # start sending the file
     progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
-                    unit_divisor=BUFFER_SIZE)
+                    unit_divisor=1024)
     sended = 0
     with open(filename, "rb") as f:
         for _ in progress:
