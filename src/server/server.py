@@ -15,7 +15,7 @@ if not os.path.exists(f"{os.getcwd()}/logs/"):
     os.makedirs(f"{os.getcwd()}/logs/")
 
 # region CONSTANTES
-LOGS_FILE = f"{os.getcwd()}\\logs\\{str.replace(str(datetime.now()), ':', '-')}.log"
+LOGS_FILE = f"{os.getcwd()}{os.path.sep}logs{os.path.sep}{str.replace(str(datetime.now()), ':', '-')}.log"
 BUFFER_SIZE = 4096
 SEPARATOR = "<SEPARATOR>"
 BLOCKSIZE = 65536
