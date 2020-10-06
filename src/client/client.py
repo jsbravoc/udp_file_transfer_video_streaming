@@ -66,7 +66,7 @@ if path != "":
 filesize = int(filesize)
 received = 0
 progress = tqdm.tqdm(range(filesize), f"Recibiendo {filename} de {host}", unit="B", unit_scale=True,
-                     unit_divisor=1024)
+                     unit_divisor=BUFFER_SIZE)
 with open(filename, "wb") as f:
     for _ in progress:
         # read 1024 bytes from the socket (receive)
