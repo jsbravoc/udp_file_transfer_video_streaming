@@ -60,9 +60,6 @@ s.send("Notificación de inicio".encode())
 received = s.recv(BUFFER_SIZE).decode()
 filename, filesize = received.split(SEPARATOR)
 filename = os.path.basename(filename)
-
-file_hash = s.recv(BUFFER_SIZE).decode()
-print(f"file hash = {file_hash}")
 if path != "":
     filename = os.path.join(path, filename)
 # convert to integer
