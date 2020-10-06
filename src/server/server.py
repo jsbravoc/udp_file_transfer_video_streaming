@@ -16,7 +16,7 @@ if not os.path.exists(f"{os.getcwd()}/logs/"):
 if not os.path.exists(f"{os.getcwd()}/logs/tqdm"):
     os.makedirs(f"{os.getcwd()}/logs/tqdm")
 
-LOGS_FILE = f"{os.getcwd()}\\logs\\{str.replace(str(datetime.now()), ':', '-')}.log"
+LOGS_FILE = f"{os.getcwd()}{os.path.sep}logs{os.path.sep}{str.replace(str(datetime.now()), ':', '-')}.log"
 
 logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
                                                   encoding='utf-8', mode='a+')],
