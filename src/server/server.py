@@ -68,7 +68,7 @@ def read_listdir(dir):
 
 def threaded(client):
     client[0].send(f"{filename}{SEPARATOR}{filesize}".encode())
-    client[0].send(f"{file_hash}".encode())
+    client[0].send(file_hash)
     # start sending the file
     progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
                     unit_divisor=1024)
