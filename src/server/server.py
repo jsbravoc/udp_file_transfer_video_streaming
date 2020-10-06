@@ -340,7 +340,6 @@ try:
     if usrs > 1:
         if usrs > 25:
             threadQueue = queue.Queue()
-
             for j in range(len(arrayOfUsers)):
                 threadQueue.put(arrayOfUsers[j])
 
@@ -349,7 +348,6 @@ try:
                 t.start()
 
             threadQueue.join()
-
         else:
             pool = ThreadPool(usrs)
             pool.map(threaded, arrayOfUsers)
