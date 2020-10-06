@@ -1,16 +1,14 @@
-﻿import socket
-from tqdm.auto import tqdm
-import os
-from _thread import *
-from multiprocessing.dummy import Pool as ThreadPool
-from datetime import datetime
-import io
-import shutil
+﻿import io
 import logging
 import os
-import sys
-import copy
+import socket
+from _thread import *
+from datetime import datetime
+from multiprocessing.dummy import Pool as ThreadPool
 from sys import platform
+
+import serverconfig as cfg
+from tqdm.auto import tqdm
 
 if not os.path.exists(f"{os.getcwd()}/logs/"):
     os.makedirs(f"{os.getcwd()}/logs/")
@@ -18,8 +16,7 @@ if not os.path.exists(f"{os.getcwd()}/logs/"):
 if not os.path.exists(f"{os.getcwd()}/logs/tqdm"):
     os.makedirs(f"{os.getcwd()}/logs/tqdm")
 
-
-LOGS_FILE = f"{os.getcwd()}\\logs\\{str.replace(str(datetime.now()),':','-')}.log"
+LOGS_FILE = f"{os.getcwd()}\\logs\\{str.replace(str(datetime.now()), ':', '-')}.log"
 
 logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
                                                   encoding='utf-8', mode='a+')],
@@ -29,14 +26,24 @@ logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
 logger_progress = logging.getLogger("Progress")
 logger_tcp = logging.getLogger("TCP_Packets")
 
+print("------------Cargar configuraciones por defecto------------")
+with open("serverconfig.py", 'r') as f:
+    print(f.read())
+config = input("Seleccione una configuración por defecto: (valor por defecto: Azure) ")
+if config not in cfg.ServerConfig:
+    print(f"Valor no admitido {config}, se utilizará valor por defecto")
+    config = cfg.ServerConfig["Azure"]
+else:
+    config = cfg.ServerConfig[config]
+
 # CONSTANTS
-SERVER_HOST = "0.0.0.0"
-SERVER_PORT = 9898
+SERVER_HOST = config['defaultIP']
+SERVER_PORT = config['defaultPort']
 BUFFER_SIZE = 4096
 SEPARATOR = "<SEPARATOR>"
-DEFAULT_DIRECTORY = "D:\\Downloads"
+DEFAULT_DIRECTORY = config['defaultDir']
 
-STRING_BUFFER = io.StringIO("some initial text data")
+STRING_BUFFER = io.StringIO("")
 
 
 def read_listdir(dir):
@@ -50,7 +57,7 @@ def read_listdir(dir):
     ind = 1
     archivos = list()
     for d in listdir:
-        if os.path.isdir(os.path.join(directory, d)):
+        if os.path.isdir(os.path.join(dir, d)):
             # skip directories
             continue
         archivos.append(f"{ind}-{d}")
@@ -62,7 +69,7 @@ def threaded(client):
     client[0].send(f"{filename}{SEPARATOR}{filesize}".encode())
     # start sending the file
     progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
-                unit_divisor=BUFFER_SIZE)
+                    unit_divisor=BUFFER_SIZE)
     sended = 0
     with open(filename, "rb") as f:
         for _ in progress:
@@ -83,7 +90,7 @@ def threaded(client):
             sended += len(bytes_read)
             progress.update(len(bytes_read))
             logger_tcp.critical(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                    f"paquete :{round(sended/BUFFER_SIZE)}/{round(filesize/BUFFER_SIZE)}" )
+                                f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
 
 
 print("** Para utilizar valores por defecto, ingresar cadena vacía **")
@@ -99,7 +106,6 @@ while not directoryConfirmed:
         if directory == "":
             print(f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
             directory = DEFAULT_DIRECTORY
-
 
     lista = read_listdir(directory)
     if len(lista) == 0:
@@ -126,7 +132,7 @@ while not directoryConfirmed:
         opt = int(opt)
         filename = os.path.join(directory, lista[opt - 1].partition("-")[len(lista[opt - 1].partition("-")) - 1])
         filesize = os.path.getsize(filename)
-        print(f"Archivo seleccionado: {filename}, con tamaño: {filesize/(1024*1024)} MB")
+        print(f"Archivo seleccionado: {filename}, con tamaño: {filesize / (1024 * 1024)} MB")
         print("Si quiere cambiar de archivo, utilizar [<]")
         usrs = input("Seleccione la cantidad de usuarios a los que quiere enviar el archivo (valor por defecto: 1): ")
         if usrs == "<":
@@ -141,9 +147,6 @@ while not directoryConfirmed:
 
     directoryConfirmed = True
 
-
-
-
 # accept connection if there is any
 conns = 0
 s = socket.socket()
@@ -151,14 +154,12 @@ s.bind((SERVER_HOST, SERVER_PORT))
 print(f"[*] Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
 s.listen(usrs)
 
-
-
 arrayOfUsers = []
 
 try:
     while conns < usrs:
         c, address = s.accept()
-        print(f"[+] El usuario {address} se ha conectado {conns+1}/{usrs}")
+        print(f"[+] El usuario {address} se ha conectado {conns + 1}/{usrs}")
 
         notification = c.recv(BUFFER_SIZE).decode()
         if notification == "Notificación de inicio":
@@ -197,8 +198,5 @@ try:
 
 
 
-except KeyboardInterrupt:
+except:
     s.close()
-
-# close the server socket
-s.close()

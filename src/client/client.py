@@ -1,20 +1,17 @@
-
 # Importing libraries
-import socket
-import os
-import tqdm
 import logging
+import os
+import socket
 from datetime import datetime
 from sys import platform
+
+import clientconfig as cfg
+import tqdm
 
 if not os.path.exists(f"{os.getcwd()}/logs/"):
     os.makedirs(f"{os.getcwd()}/logs/")
 
-if not os.path.exists(f"{os.getcwd()}/logs/tqdm"):
-    os.makedirs(f"{os.getcwd()}/logs/tqdm")
-
-
-LOGS_FILE = f"{os.getcwd()}\\logs\\{str.replace(str(datetime.now()),':','-')}.log"
+LOGS_FILE = f"{os.getcwd()}\\logs\\{str.replace(str(datetime.now()), ':', '-')}.log"
 
 logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
                                                   encoding='utf-8', mode='a+')],
@@ -25,25 +22,31 @@ logger_progress = logging.getLogger("Progress")
 logger_tcp = logging.getLogger("TCP_Packets")
 
 SEPARATOR = "<SEPARATOR>"
-BUFFER_SIZE = 4096 # send 4096 bytes each time step
+BUFFER_SIZE = 4096  # send 4096 bytes each time step
 
+print("------------Cargar configuraciones por defecto------------")
+with open("clientconfig.py", 'r') as f:
+    print(f.read())
+config = input("Seleccione una configuración por defecto: (valor por defecto: Azure) ")
+if config not in cfg.ClientConfig:
+    print(f"Valor no admitido {config}, se utilizará valor por defecto")
+    config = cfg.ClientConfig["Azure"]
+else:
+    config = cfg.ClientConfig[config]
 
 # the ip address or hostname of the server, the receiver
 print("** Para utilizar valores por defecto, ingresar cadena vacía **")
-host = input("Ingrese la IP del servidor: (por defecto '52.186.137.191') ")
+host = input(f"Ingrese la IP del servidor: (por defecto '{config['defaultIP']}') ")
 if host == "":
-    host = "localhost"
-    #host = "52.186.137.191"
+    host = config['defaultIP']
 
-port = 9898
-path = input("Ingrese la ruta donde se quiere guardar el archivo: (por defecto en src/client/) ")
+port = config['defaultPort']
+path = input(f"Ingrese la ruta donde se quiere guardar el archivo: (por defecto en {config['defaultDir']}) ")
 if path != "":
     if not path.endswith("/"):
-        path+="/"
+        path += "/"
     if not os.path.exists(path):
         os.makedirs(path)
-
-
 
 # create the client socket
 s = socket.socket()
@@ -54,7 +57,6 @@ print("[+] Conectado.")
 
 s.send("Notificación de inicio".encode())
 
-
 received = s.recv(BUFFER_SIZE).decode()
 filename, filesize = received.split(SEPARATOR)
 filename = os.path.basename(filename)
@@ -63,7 +65,8 @@ if path != "":
 # convert to integer
 filesize = int(filesize)
 received = 0
-progress = tqdm.tqdm(range(filesize), f"Recibiendo {filename} de {host}", unit="B", unit_scale=True, unit_divisor=BUFFER_SIZE)
+progress = tqdm.tqdm(range(filesize), f"Recibiendo {filename} de {host}", unit="B", unit_scale=True,
+                     unit_divisor=BUFFER_SIZE)
 with open(filename, "wb") as f:
     for _ in progress:
         # read 1024 bytes from the socket (receive)
@@ -78,12 +81,11 @@ with open(filename, "wb") as f:
         # write to the file the bytes we just received
         f.write(bytes_read)
         # update the progress bar
-        received+=len(bytes_read)
+        received += len(bytes_read)
         progress.update(len(bytes_read))
 
         logger_tcp.critical(f"Recibiendo {filename} de {host} Tamaño paquete: {BUFFER_SIZE}, "
-                            f"paquete :{round(received/BUFFER_SIZE)}/{round(filesize/BUFFER_SIZE)}" )
-
+                            f"paquete :{round(received / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
 
 print("\n---------------------------------------------------------------------------\n")
 print(f"   Se finalizó la transferencia del archivo {os.path.basename(filename)}            ")
@@ -96,7 +98,6 @@ else:
     if abrirArchivo != "" and abrirArchivo != "N":
         print(f"Valor no admitido {abrirArchivo}, se utilizará valor por defecto")
     abrirArchivo = False
-
 
 abrirLogs = input("¿Desea abrir el archivo de logs  (Y/N): (por defecto: N) ")
 if abrirLogs == "Y":
