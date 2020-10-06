@@ -9,10 +9,13 @@ from datetime import datetime
 from multiprocessing.dummy import Pool as ThreadPool
 from sys import platform
 import hashlib
+from threading import Thread
+
 import serverconfig as cfg
 from tqdm.notebook import tqdm
 from functools import lru_cache
 import io
+import queue
 
 # Si no existe la carpeta de logs, entonces se crea
 if not os.path.exists(f"{os.getcwd()}/logs/"):
@@ -84,6 +87,71 @@ def read_listdir(dir):
         ind += 1
     return archivos
 
+def multiThreaded():
+    client = threadQueue.get()
+    cached_file = get_cached_file(filename)
+    try:
+        if CLONE_FILE:
+            file = copy.deepcopy(cached_file)
+        else:
+            file = cached_file
+
+        logger_tcp.info(
+            f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}")
+        client[0].send(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode())
+        sended = 0
+        initialTime = datetime.now()
+        file.seek(0)
+        bytes_read = file.read(BUFFER_SIZE)
+
+        if DISABLE_PROGRESS_BAR:
+            while bytes_read:
+                client[0].sendall(bytes_read)
+                sended += len(bytes_read)
+                if not IGNORE_PACKET_COUNT:
+                    logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                     f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+                if not IGNORE_BYTES_COUNT:
+                    logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                           f"bytes enviados :{sended}/{filesize}")
+                bytes_read = file.read(BUFFER_SIZE)
+            now = datetime.now()
+            client[0].close()
+            logger_progress.info(f"Enviando {filename} a {client[1][0]}: 100%|██████████| "
+                                 f"{round(filesize / (1024 * 1024), 2)}MB/{round(filesize / (1024 * 1024), 2)}MB "
+                                 f"[{str(math.floor((now - initialTime).total_seconds() / 60)).zfill(2)}:"
+                                 f"{str(math.ceil((now - initialTime).total_seconds()) % 60).zfill(2)}]")
+
+        else:
+            progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
+                            unit_divisor=BUFFER_SIZE)
+
+            while bytes_read:
+                for _ in progress:
+                    if sended == filesize:
+                        progress.n = filesize
+                        progress.refresh()
+                        logger_progress.info(str(progress))
+                        client[0].close()
+                        logger_connections.info(f"El usuario {address} se ha desconectado")
+                        progress.close()
+                        break
+                    client[0].sendall(bytes_read)
+                    sended += len(bytes_read)
+                    progress.update(len(bytes_read))
+                    if not IGNORE_PACKET_COUNT:
+                        logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                         f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+                    if not IGNORE_BYTES_COUNT:
+                        logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                               f"bytes enviados :{sended}/{filesize}")
+                    bytes_read = file.read(BUFFER_SIZE)
+
+    except Exception as e:
+        print(f"[ERROR]: {e}")
+        logger_connections.exception(e)
+        client[0].close()
+    threadQueue.task_done()
 
 def threaded(client):
     cached_file = get_cached_file(filename)
@@ -263,11 +331,14 @@ try:
 
     if usrs > 1:
         if usrs > 25:
-            for i in range(0, int(math.ceil(usrs/25))):
-                pool = ThreadPool(25)
-                pool.map(threaded, arrayOfUsers[i:(i+25)])
-                pool.join()
+            threadQueue = queue.Queue()
+            for i in range(25):
+                t = Thread(target=multiThreaded)
+                t.daemon = True
+                t.start()
 
+            for j in range(len(arrayOfUsers)):
+                threadQueue.put(arrayOfUsers[j])
         else:
             pool = ThreadPool(usrs)
             pool.map(threaded, arrayOfUsers)
