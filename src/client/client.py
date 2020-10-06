@@ -10,13 +10,13 @@ import clientconfig as cfg
 import tqdm
 
 def calculate_hash(file):
-    file_hash = hashlib.md5()
+    file_hash = hashlib.sha256()
     with open(file, 'rb') as f:
         fb = f.read(BUFFER_SIZE)
         while len(fb)>0:
             file_hash.update(fb)
             fb = f.read(BUFFER_SIZE)
-    return file_hash.hexdigest()
+    return file_hash.digest()
 if not os.path.exists(f"{os.getcwd()}/logs/"):
     os.makedirs(f"{os.getcwd()}/logs/")
 
@@ -70,7 +70,7 @@ received = s.recv(BUFFER_SIZE).decode()
 filename, filesize = received.split(SEPARATOR)
 filename = os.path.basename(filename)
 
-file_hash = s.recv(100000).decode()
+file_hash = s.recv(50000)
 if path != "":
     filename = os.path.join(path, filename)
 # convert to integer
@@ -104,7 +104,7 @@ print("\n-----------------------------------------------------------------------
 
 print("Calculando hash del archivo...")
 local_hash = calculate_hash(filename)
-if local_hash == file_hash:
+if local_hash.hex() == file_hash.hex():
     print("El hash calculado del archivo es igual al recibido")
 else:
     print("El hash del archivo no coincide con el recibido")
