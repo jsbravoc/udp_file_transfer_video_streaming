@@ -103,11 +103,11 @@ print(f"   Se finalizó la transferencia del archivo {os.path.basename(filename)
 print("\n---------------------------------------------------------------------------")
 
 print("Calculando hash del archivo...")
-local_hash = calculate_hash(filename)
-if local_hash == file_hash:
-    print("El hash calculado del archivo es igual al recibido")
-else:
-    print("El hash del archivo no coincide con el recibido")
+#local_hash = calculate_hash(filename)
+#if local_hash == file_hash:
+#    print("El hash calculado del archivo es igual al recibido")
+#else:
+#    print("El hash del archivo no coincide con el recibido")
 abrirArchivo = input("¿Desea abrir el archivo (Y/N): (por defecto: N) ")
 if abrirArchivo == "Y":
     abrirArchivo = True
