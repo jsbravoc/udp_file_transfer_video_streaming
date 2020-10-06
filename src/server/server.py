@@ -1,6 +1,7 @@
 ﻿import copy
 import hashlib
 import logging
+import math
 import os
 import socket
 from _thread import *
@@ -9,7 +10,7 @@ from multiprocessing.dummy import Pool as ThreadPool
 from sys import platform
 import hashlib
 import serverconfig as cfg
-from tqdm.auto import tqdm
+from tqdm.notebook import tqdm
 from functools import lru_cache
 import io
 
@@ -36,8 +37,11 @@ logger_tcp = logging.getLogger("TCP_Packets")
 logger_tcp_bytes = logging.getLogger("TCP_Bytes")
 
 print("------------Cargar configuraciones por defecto------------")
-with open("serverconfig.py", 'r') as f:
-    print(f.read())
+try:
+    with open("serverconfig.py", 'r') as f:
+        print(f.read())
+except Exception as e:
+    print(e)
 config = input("Seleccione una configuración por defecto: (valor por defecto: Azure) ")
 if config not in cfg.ServerConfig:
     print(f"Valor no admitido {config}, se utilizará valor por defecto")
@@ -53,7 +57,7 @@ IGNORE_PACKET_COUNT = config['ignorePacketCount']
 IGNORE_BYTES_COUNT = config['ignoreBytesCount']
 IGNORE_CLIENT_LIMIT = config['ignoreClientLimit']
 CLONE_FILE = config['cloneFile']
-
+DISABLE_PROGRESS_BAR = config['disableProgressBar']
 
 if HASHING_METHOD != "sha256":
     print(f"Método de hashing {HASHING_METHOD} no soportado actualmente, utilizando sha256")
@@ -92,44 +96,58 @@ def threaded(client):
         logger_tcp.info(
             f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}")
         client[0].send(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode())
-        # start sending the file
-        progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
-                        unit_divisor=1024)
         sended = 0
-
+        initialTime = datetime.now()
         file.seek(0)
         bytes_read = file.read(BUFFER_SIZE)
 
-        while bytes_read:
-            for _ in progress:
-                # read the bytes from the file
-                if sended == filesize:
-                    # file transmitting is done
-                    progress.n = filesize
-                    progress.refresh()
-                    logger_progress.info(str(progress))
-                    client[0].close()
-                    logger_connections.info(f"El usuario {address} se ha desconectado")
-                    progress.close()
-                    break
-                # we use sendall to assure transimission in
-                # busy networks
+        if DISABLE_PROGRESS_BAR:
+            while bytes_read:
                 client[0].sendall(bytes_read)
-                # update the progress bar
                 sended += len(bytes_read)
-                progress.update(len(bytes_read))
                 if not IGNORE_PACKET_COUNT:
                     logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                    f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+                                     f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
                 if not IGNORE_BYTES_COUNT:
                     logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                        f"bytes enviados :{sended}/{filesize}")
+                                           f"bytes enviados :{sended}/{filesize}")
                 bytes_read = file.read(BUFFER_SIZE)
+            now = datetime.now()
+            client[0].close()
+            logger_progress.info(f"Enviando {filename} a {client[1][0]}: 100%|██████████| "
+                                 f"{round(filesize / (1024 * 1024), 2)}MB/{round(filesize / (1024 * 1024), 2)}MB "
+                                 f"[{str(math.floor((now - initialTime).total_seconds() / 60)).zfill(2)}:"
+                                 f"{str(math.ceil((now - initialTime).total_seconds()) % 60).zfill(2)}]")
+
+        else:
+            progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
+                            unit_divisor=BUFFER_SIZE)
+
+            while bytes_read:
+                for _ in progress:
+                    if sended == filesize:
+                        progress.n = filesize
+                        progress.refresh()
+                        logger_progress.info(str(progress))
+                        client[0].close()
+                        logger_connections.info(f"El usuario {address} se ha desconectado")
+                        progress.close()
+                        break
+                    client[0].sendall(bytes_read)
+                    sended += len(bytes_read)
+                    progress.update(len(bytes_read))
+                    if not IGNORE_PACKET_COUNT:
+                        logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                         f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+                    if not IGNORE_BYTES_COUNT:
+                        logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                               f"bytes enviados :{sended}/{filesize}")
+                    bytes_read = file.read(BUFFER_SIZE)
+
     except Exception as e:
         print(f"[ERROR]: {e}")
         logger_connections.exception(e)
         client[0].close()
-
 
 
 # region PARÁMETROS DEL SERVIDOR

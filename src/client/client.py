@@ -22,8 +22,11 @@ BLOCKSIZE = 65536
 
 # region CARGA DE CONFIGURACIÓN
 print("------------Cargar configuraciones por defecto------------")
-with open("clientconfig.py", 'r') as f:
-    print(f.read())
+try:
+    with open("clientconfig.py", 'r') as f:
+        print(f.read())
+except Exception as e:
+    print(e)
 config = input("Seleccione una configuración por defecto: (valor por defecto: Azure) ")
 if config not in cfg.ClientConfig:
     print(f"Valor no admitido {config}, se utilizará valor por defecto")

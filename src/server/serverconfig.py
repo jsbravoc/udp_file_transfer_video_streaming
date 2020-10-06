@@ -7,7 +7,8 @@ ServerConfig = {
         "ignorePacketCount": True,
         "ignoreBytesCount": True,
         "ignoreClientLimit": False,
-        "cloneFile": True
+        "cloneFile": True,
+        "disableProgressBar": True
     },
     "jsbravoc": {
             "defaultIP": "0.0.0.0",
@@ -17,6 +18,7 @@ ServerConfig = {
             "ignorePacketCount": True,
             "ignoreBytesCount": True,
             "ignoreClientLimit": False,
-            "cloneFile": True
+            "cloneFile": True,
+            "disableProgressBar": True
         }
 }
