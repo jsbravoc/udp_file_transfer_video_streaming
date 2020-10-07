@@ -3,7 +3,7 @@ src/server/logs/
 **/venv
 .idea/
 logs/
-lab3_key_converted.ppk
+*.ppk
 *.mp4
 *.pdf
 *.docx
