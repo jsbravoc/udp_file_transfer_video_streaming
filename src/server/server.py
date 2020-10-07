@@ -113,7 +113,7 @@ def multiThreaded():
                     sended += len(bytes_read)
                     if not IGNORE_PACKET_COUNT:
                         logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                         f"paquete: {round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+                                         f"paquete: {math.ceil(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
                     if not IGNORE_BYTES_COUNT:
                         logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
                                                f"bytes enviados: {sended}/{filesize}")
