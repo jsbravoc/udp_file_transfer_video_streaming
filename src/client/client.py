@@ -47,7 +47,7 @@ logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
                     level=logging.DEBUG)
 logger_progress = logging.getLogger("Progress")
 logger_tcp = logging.getLogger("TCP_Packets")
-logger_tcp = logging.getLogger("TCP_Bytes")
+logger_tcp_bytes = logging.getLogger("TCP_Bytes")
 # endregion
 
 
