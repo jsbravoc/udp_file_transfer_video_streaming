@@ -112,8 +112,8 @@ with open(filename, "wb") as f:
             logger_tcp.critical(f"Recibiendo {filename} de {host} Tamaño paquete: {BUFFER_SIZE}, "
                                 f"paquete :{round(received / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
         if not IGNORE_BYTES_COUNT:
-            logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                   f"bytes enviados: {sended}/{filesize}")
+            logger_tcp_bytes.debug(f"Recibiendo {filename} de {host} Tamaño paquete: {BUFFER_SIZE}, "
+                                   f"bytes enviados: {received}/{filesize}")
 # endregion
 
 # region VALIDACIÓN ARCHIVO
