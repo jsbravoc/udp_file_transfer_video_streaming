@@ -110,7 +110,7 @@ with open(filename, "wb") as f:
 
         if not IGNORE_PACKET_COUNT:
             logger_tcp.critical(f"Recibiendo {filename} de {host} Tamaño paquete: {BUFFER_SIZE}, "
-                                f"paquete :{math.ceil(received / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+                                f"paquete :{round(received / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
         if not IGNORE_BYTES_COUNT:
             logger_tcp_bytes.debug(f"Recibiendo {filename} de {host} Tamaño paquete: {BUFFER_SIZE}, "
                                    f"bytes enviados: {received}/{filesize}")
