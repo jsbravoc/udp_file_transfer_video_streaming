@@ -33,7 +33,7 @@ logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
                                                   encoding='utf-8', mode='a+')],
                     format="%(asctime)s {%(name)s} [%(levelname)s] %(message)s",
                     datefmt="%F %T",
-                    level=logging.INFO)
+                    level=logging.DEBUG)
 logger_connections = logging.getLogger("Connection")
 logger_progress = logging.getLogger("Progress")
 logger_tcp = logging.getLogger("TCP_Packets")
@@ -113,10 +113,10 @@ def multiThreaded():
                     sended += len(bytes_read)
                     if not IGNORE_PACKET_COUNT:
                         logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                         f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+                                         f"paquete: {round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
                     if not IGNORE_BYTES_COUNT:
                         logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                               f"bytes enviados :{sended}/{filesize}")
+                                               f"bytes enviados: {sended}/{filesize}")
                     bytes_read = file.read(BUFFER_SIZE)
                 now = datetime.now()
                 client[0].close()
@@ -155,7 +155,7 @@ def multiThreaded():
             logger_connections.exception(e)
             client[0].close()
         threadQueue.task_done()
-        logger_threads.info(f"Thread finalizó de atender a {client[0]}")
+        logger_threads.info(f"Thread finalizó de atender a {client[1]}")
 
 
 def threaded(client):
@@ -222,7 +222,7 @@ def threaded(client):
         print(f"[ERROR]: {e}")
         logger_connections.exception(e)
         client[0].close()
-    logger_threads.info(f"Thread finalizó de atender a {client[0]}")
+    logger_threads.info(f"Thread finalizó de atender a {client[1]}")
 
 # region PARÁMETROS DEL SERVIDOR
 print("** Para utilizar valores por defecto, ingresar cadena vacía **")
@@ -251,7 +251,7 @@ while not directoryConfirmed:
     print("Si quiere cambiar de directorio, utilizar [<]")
     opt = input("Seleccione el archivo que quiere enviar (valor por defecto: 1): ")
     if opt == "<":
-        continue;
+        continue
     fileConfirmed = False
     firstOption = True
     while not fileConfirmed:
@@ -269,7 +269,7 @@ while not directoryConfirmed:
         usrs = input("Seleccione la cantidad de usuarios a los que quiere enviar el archivo (valor por defecto: 1): ")
         if usrs == "<":
             firstOption = False
-            continue;
+            continue
         while usrs != "" and (not usrs.isnumeric() or int(usrs) < 1):
             usrs = input("Seleccione una opción válida [min. 1] (valor por defecto: 1): ")
         if usrs == "":
@@ -292,7 +292,7 @@ with open(filename, 'rb') as afile:
 FILE_HASH = hasher.hexdigest()
 
 
-@lru_cache(maxsize=None, typed=True)  # typed will cache as per different arg.
+@lru_cache(maxsize=None, typed=True)
 def get_cached_file(filename):
     m = io.BytesIO()
     with open(filename, 'rb') as f:

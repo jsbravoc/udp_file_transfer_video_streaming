@@ -7,17 +7,17 @@ ServerConfig = {
         "ignorePacketCount": True,
         "ignoreBytesCount": True,
         "ignoreClientLimit": False,
-        "cloneFile": True,
+        "cloneFile": False,
         "disableProgressBar": True,
-        "excludeMessageComparison": True
+        "excludeMessageComparison": False
     },
     "jsbravoc": {
             "defaultIP": "0.0.0.0",
             "defaultPort": 9898,
             "defaultDir": "D:\\Downloads",
             "hashingMethod": "sha256",
-            "ignorePacketCount": True,
-            "ignoreBytesCount": True,
+            "ignorePacketCount": False,
+            "ignoreBytesCount": False,
             "ignoreClientLimit": False,
             "cloneFile": True,
             "disableProgressBar": True,
