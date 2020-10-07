@@ -34,6 +34,7 @@ if config not in cfg.ClientConfig:
 else:
     config = cfg.ClientConfig[config]
 IGNORE_PACKET_COUNT = config["ignorePacketCount"]
+IGNORE_BYTES_COUNT = config["ignoreBytesCount"]
 DEFAULT_IP = config["defaultIP"]
 DEFAULT_DIR = config["defaultDir"]
 # endregion
@@ -43,9 +44,10 @@ logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
                                                   encoding='utf-8', mode='a+')],
                     format="%(asctime)s {%(name)s} [%(levelname)s] %(message)s",
                     datefmt="%F %T",
-                    level=logging.INFO)
+                    level=logging.DEBUG)
 logger_progress = logging.getLogger("Progress")
 logger_tcp = logging.getLogger("TCP_Packets")
+logger_tcp = logging.getLogger("TCP_Bytes")
 # endregion
 
 
@@ -109,6 +111,9 @@ with open(filename, "wb") as f:
         if not IGNORE_PACKET_COUNT:
             logger_tcp.critical(f"Recibiendo {filename} de {host} Tamaño paquete: {BUFFER_SIZE}, "
                                 f"paquete :{round(received / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+        if not IGNORE_BYTES_COUNT:
+            logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                                   f"bytes enviados: {sended}/{filesize}")
 # endregion
 
 # region VALIDACIÓN ARCHIVO
@@ -129,7 +134,7 @@ with open(filename, 'rb') as afile:
         buf = afile.read(BLOCKSIZE)
 hashClient = hasher.hexdigest()
 
-print(f"\n Hash del servidor: {hashClient} \n")
+print(f"\n Hash del cliente: {hashClient} \n")
 
 if hashServer == hashClient:
     print("Hash SHA-256 verificado correctamente")
