@@ -1,0 +1,7 @@
+2020-10-06 13:26:20 {Progress} [INFO] Se enviará el siguiente archivo: Parcial_1_Enunciado.pdf, con tamaño: 0.5008964538574219 MB
+2020-10-06 13:26:20 {Connection} [INFO] Escuchando desde 0.0.0.0:9898
+2020-10-06 13:26:20 {Connection} [INFO] Máximo número de clientes aceptados 1
+2020-10-06 13:26:29 {Connection} [INFO] El usuario ('127.0.0.1', 61921) se ha conectado 1/1
+2020-10-06 13:26:29 {TCP_Packets} [INFO] Enviando INFO al Cliente: Parcial_1_Enunciado.pdf<SEPARATOR>525228<SEPARATOR>1f796393abe2c3c2a73cbae2b974301c0e6418ab127c5b5cb7e1dc8ff1b8e7ce
+2020-10-06 13:26:29 {Progress} [INFO] Enviando D:\Downloads\Parcial_1_Enunciado.pdf a 127.0.0.1: 100%|██████████| 513k/513k [00:00<00:00, 175MB/s]
+2020-10-06 13:26:29 {Connection} [INFO] El usuario ('127.0.0.1', 61921) se ha desconectado

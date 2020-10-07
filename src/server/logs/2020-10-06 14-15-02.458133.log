@@ -1,0 +1,6 @@
+2020-10-06 14:15:09 {Progress} [INFO] Se enviará el siguiente archivo: 02-06-2020-12.30.03.pdf, con tamaño: 5.844194412231445 MB
+2020-10-06 14:15:10 {Connection} [INFO] Escuchando desde 0.0.0.0:9898
+2020-10-06 14:15:10 {Connection} [INFO] Se espera la conexión de un usuario para empezar la transmisión
+2020-10-06 14:15:10 {Connection} [INFO] Máximo número de clientes aceptados: 1
+2020-10-06 14:15:23 {Connection} [INFO] El usuario ('127.0.0.1', 62691) se ha conectado 1/1
+2020-10-06 14:15:23 {TCP_Packets} [INFO] Enviando INFO al Cliente: 02-06-2020-12.30.03.pdf<SEPARATOR>6128082<SEPARATOR>6a5315bfbe68f7f8f01f22ce0e9daa3e60a071c92dc2948e28c4a545841a2066

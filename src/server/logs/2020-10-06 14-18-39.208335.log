@@ -1,0 +1,5 @@
+2020-10-06 14:18:46 {Progress} [INFO] Se enviará el siguiente archivo: 02-06-2020-12.30.03.pdf, con tamaño: 5.844194412231445 MB
+2020-10-06 14:18:46 {Connection} [INFO] Escuchando desde 0.0.0.0:9898
+2020-10-06 14:18:46 {Connection} [INFO] Se espera la conexión de un usuario para empezar la transmisión
+2020-10-06 14:18:46 {Connection} [INFO] Máximo número de clientes aceptados: 1
+2020-10-06 14:19:08 {Connection} [INFO] El usuario ('127.0.0.1', 62755) se ha conectado 1/1

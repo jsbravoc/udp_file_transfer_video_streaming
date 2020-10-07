@@ -1,0 +1,7 @@
+2020-10-06 13:23:52 Progress:[INFO:] Se enviará el siguiente archivo: Taller 4.docx, con tamaño: 0.12225151062011719 MB
+2020-10-06 13:23:52 Connection:[INFO:] Escuchando desde 0.0.0.0:9898
+2020-10-06 13:23:52 Connection:[INFO:] Máximo número de clientes aceptados 1
+2020-10-06 13:24:03 Connection:[INFO:] El usuario ('127.0.0.1', 61880) se ha conectado 1/1
+2020-10-06 13:24:03 TCP_Packets:[INFO:] Enviando INFO al Cliente: Taller 4.docx<SEPARATOR>128190<SEPARATOR>8c78bd4960e1429f58968c387f99439d18b5ae6c5a05afc89facab02e09c86a4
+2020-10-06 13:24:03 Progress:[INFO:] Enviando D:\Downloads\Taller 4.docx a 127.0.0.1: 100%|██████████| 125k/125k [00:00<00:00, 125MB/s]
+2020-10-06 13:24:03 Connection:[INFO:] El usuario ('127.0.0.1', 61880) se ha desconectado

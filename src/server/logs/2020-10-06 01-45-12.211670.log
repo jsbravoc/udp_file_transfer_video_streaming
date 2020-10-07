@@ -1,0 +1,3 @@
+2020-10-06 Tuesday 01:45:34 TCP_Packets:CRITICAL:El usuario ('127.0.0.1', 54826) se ha conectado 1/1
+2020-10-06 Tuesday 01:45:34 TCP_Packets:CRITICAL:Enviando HEADER al Cliente: D:\Downloads\Screenshot 2020-10-04 235620.png<SEPARATOR>26005<SEPARATOR>b431d274f28193a5491449cda2df68ebf0d9bb672a4fc8434f42d5f1def20dab
+2020-10-06 Tuesday 01:45:34 Progress:INFO:Enviando D:\Downloads\Screenshot 2020-10-04 235620.png a 127.0.0.1: 100%|██████████| 6.35k/6.35k [00:00<00:00, 25.3MB/s]
