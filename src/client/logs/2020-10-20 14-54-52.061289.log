@@ -1,0 +1,420 @@
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :0/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 1024/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :0/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 2048/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :1/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 3072/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :1/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 4096/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :1/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 5120/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :2/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 6144/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :2/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 7168/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :2/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 8192/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :2/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 9216/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :2/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 10240/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :3/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 11264/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :3/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 12288/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :3/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 13312/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :4/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 14336/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :4/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 15360/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :4/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 16384/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :4/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 17408/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :4/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 18432/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :5/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 19456/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :5/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 20480/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :5/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 21504/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :6/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 22528/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :6/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 23552/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :6/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 24576/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :6/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 25600/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :6/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 26624/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :7/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 27648/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :7/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 28672/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :7/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 29696/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :8/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 30720/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :8/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 31744/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :8/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 32768/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :8/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 33792/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :8/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 34816/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :9/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 35840/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :9/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 36864/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :9/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 37888/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :10/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 38912/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :10/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 39936/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :10/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 40960/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :10/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 41984/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :10/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 43008/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :11/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 44032/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :11/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 45056/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :11/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 46080/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :12/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 47104/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :12/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 48128/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :12/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 49152/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :12/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 50176/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :12/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 51200/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :13/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 52224/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :13/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 53248/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :13/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 54272/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :14/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 55296/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :14/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 56320/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :14/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 57344/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :14/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 58368/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :14/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 59392/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :15/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 60416/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :15/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 61440/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :15/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 62464/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :16/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 63488/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :16/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 64512/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :16/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 65536/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :16/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 66560/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :16/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 67584/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :17/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 68608/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :17/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 69632/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :17/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 70656/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :18/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 71680/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :18/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 72704/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :18/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 73728/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :18/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 74752/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :18/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 75776/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :19/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 76800/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :19/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 77824/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :19/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 78848/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :20/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 79872/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :20/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 80896/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :20/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 81920/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :20/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 82944/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :20/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 83968/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :21/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 84992/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :21/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 86016/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :21/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 87040/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :22/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 88064/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :22/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 89088/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :22/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 90112/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :22/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 91136/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :22/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 92160/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :23/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 93184/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :23/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 94208/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :23/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 95232/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :24/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 96256/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :24/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 97280/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :24/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 98304/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :24/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 99328/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :24/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 100352/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :25/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 101376/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :25/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 102400/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :25/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 103424/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :26/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 104448/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :26/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 105472/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :26/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 106496/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :26/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 107520/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :26/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 108544/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :27/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 109568/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :27/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 110592/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :27/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 111616/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :28/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 112640/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :28/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 113664/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :28/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 114688/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :28/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 115712/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :28/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 116736/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :29/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 117760/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :29/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 118784/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :29/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 119808/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :30/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 120832/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :30/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 121856/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :30/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 122880/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :30/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 123904/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :30/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 124928/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :31/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 125952/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :31/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 126976/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :31/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 128000/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :32/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 129024/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :32/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 130048/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :32/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 131072/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :32/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 132096/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :32/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 133120/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :33/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 134144/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :33/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 135168/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :33/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 136192/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :34/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 137216/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :34/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 138240/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :34/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 139264/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :34/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 140288/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :34/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 141312/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :35/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 142336/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :35/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 143360/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :35/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 144384/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :36/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 145408/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :36/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 146432/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :36/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 147456/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :36/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 148480/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :36/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 149504/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :37/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 150528/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :37/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 151552/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :37/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 152576/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :38/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 153600/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :38/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 154624/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :38/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 155648/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :38/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 156672/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :38/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 157696/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :39/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 158720/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :39/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 159744/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :39/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 160768/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :40/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 161792/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :40/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 162816/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :40/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 163840/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :40/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 164864/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :40/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 165888/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :41/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 166912/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :41/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 167936/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :41/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 168960/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :42/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 169984/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :42/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 171008/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :42/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 172032/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :42/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 173056/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :42/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 174080/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :43/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 175104/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :43/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 176128/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :43/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 177152/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :44/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 178176/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :44/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 179200/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :44/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 180224/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :44/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 181248/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :44/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 182272/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :45/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 183296/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :45/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 184320/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :45/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 185344/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :46/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 186368/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :46/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 187392/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :46/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 188416/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :46/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 189440/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :46/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 190464/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :47/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 191488/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :47/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 192512/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :47/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 193536/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :48/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 194560/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :48/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 195584/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :48/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 196608/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :48/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 197632/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :48/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 198656/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :49/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 199680/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :49/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 200704/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :49/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 201728/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :50/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 202752/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :50/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 203776/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :50/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 204800/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :50/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 205824/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :50/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 206848/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :51/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 207872/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :51/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 208896/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :51/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 209920/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :52/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 210944/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :52/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 211968/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :52/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 212992/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :52/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 214016/214903
+2020-10-20 14:54:57 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, paquete :52/52
+2020-10-20 14:54:57 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Screenshot 2020-10-15 011125.png de localhost Tamaño paquete: 4096, bytes enviados: 214903/214903

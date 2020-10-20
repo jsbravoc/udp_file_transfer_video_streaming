@@ -18,12 +18,12 @@ import io
 import queue
 
 # Si no existe la carpeta de logs, entonces se crea
-if not os.path.exists(f"{os.getcwd()}/logs/"):
-    os.makedirs(f"{os.getcwd()}/logs/")
+if not os.path.exists(f"{os.getcwd()}{os.path.sep}logs{os.path.sep}"):
+    os.makedirs(f"{os.getcwd()}{os.path.sep}logs{os.path.sep}")
 
 # region CONSTANTES
 LOGS_FILE = f"{os.getcwd()}{os.path.sep}logs{os.path.sep}{str.replace(str(datetime.now()), ':', '-')}.log"
-BUFFER_SIZE = 4096
+BUFFER_SIZE = 1024
 SEPARATOR = "<SEPARATOR>"
 BLOCKSIZE = 65536
 # endregion
@@ -36,8 +36,8 @@ logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
                     level=logging.DEBUG)
 logger_connections = logging.getLogger("Connection")
 logger_progress = logging.getLogger("Progress")
-logger_tcp = logging.getLogger("TCP_Packets")
-logger_tcp_bytes = logging.getLogger("TCP_Bytes")
+logger_udp = logging.getLogger("TCP_Packets")
+logger_udp_bytes = logging.getLogger("TCP_Bytes")
 logger_threads = logging.getLogger("Threads")
 
 print("------------Cargar configuraciones por defecto------------")
@@ -69,8 +69,15 @@ if HASHING_METHOD != "sha256":
 
 # endregion
 
+@lru_cache(maxsize=None, typed=True)
+def get_cached_file(filename):
+    m = io.BytesIO()
+    with open(filename, 'rb') as f:
+        m.write(f.read())
+    return m
 
-def read_listdir(dir):
+
+def read_listdir(process, dir):
     """
     Función que permite ver la lista de directorios
     dentro de un directorio
@@ -80,18 +87,28 @@ def read_listdir(dir):
     listdir = os.listdir(dir)
     ind = 1
     archivos = list()
+    if int(process) == 2:
+        print("\tBuscando archivos únicamente .mp4")
+    else:
+        print("\tBuscando todos los archivos en el directorio")
     for d in listdir:
         if os.path.isdir(os.path.join(dir, d)):
             # skip directories
             continue
-        archivos.append(f"{ind}-{d}")
+        # Transferencia de archivos == 1, Streaming == 2
+        if int(process) == 2:
+            if d.endswith(".mp4"):
+                archivos.append(f"{ind}-{d}")
+        else:
+            archivos.append(f"{ind}-{d}")
         ind += 1
     return archivos
+
 
 def multiThreaded():
     while True:
         client = threadQueue.get()
-        logger_threads.info(f"Thread empezando a atender a {client[1]}")
+        logger_threads.info(f"Thread empezando a atender a {client}")
         cached_file = get_cached_file(filename)
         try:
             if CLONE_FILE:
@@ -99,9 +116,9 @@ def multiThreaded():
             else:
                 file = cached_file
 
-            logger_tcp.info(
+            logger_udp.info(
                 f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}")
-            client[0].send(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode())
+            UDPSocket.sendto(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode(), client)
             sended = 0
             initialTime = datetime.now()
             file.seek(0)
@@ -109,24 +126,23 @@ def multiThreaded():
 
             if DISABLE_PROGRESS_BAR:
                 while bytes_read:
-                    client[0].sendall(bytes_read)
+                    UDPSocket.sendto(bytes_read, client)
                     sended += len(bytes_read)
                     if not IGNORE_PACKET_COUNT:
-                        logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                        logger_udp.debug(f"Enviando {filename} a {client} Tamaño paquete: {BUFFER_SIZE}, "
                                          f"paquete: {math.ceil(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
                     if not IGNORE_BYTES_COUNT:
-                        logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                        logger_udp_bytes.debug(f"Enviando {filename} a {client} Tamaño paquete: {BUFFER_SIZE}, "
                                                f"bytes enviados: {sended}/{filesize}")
                     bytes_read = file.read(BUFFER_SIZE)
                 now = datetime.now()
-                client[0].close()
-                logger_progress.info(f"Enviando {filename} a {client[1][0]}: 100%|██████████| "
+                logger_progress.info(f"Enviando {filename} a {client}: 100%|██████████| "
                                      f"{round(filesize / (1024 * 1024), 2)}MB/{round(filesize / (1024 * 1024), 2)}MB "
                                      f"[{str(math.floor((now - initialTime).total_seconds() / 60)).zfill(2)}:"
                                      f"{str(math.ceil((now - initialTime).total_seconds()) % 60).zfill(2)}]")
 
             else:
-                progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
+                progress = tqdm(range(filesize), f"Enviando {filename} a {client}", unit="B", unit_scale=True,
                                 unit_divisor=BUFFER_SIZE)
 
                 while bytes_read:
@@ -136,30 +152,31 @@ def multiThreaded():
                             progress.refresh()
                             logger_progress.info(str(progress))
                             client[0].close()
-                            logger_connections.info(f"El usuario {address} se ha desconectado")
+                            logger_connections.info(f"El usuario {client} se ha desconectado")
                             progress.close()
                             break
-                        client[0].sendall(bytes_read)
+                        UDPSocket.sendto(bytes_read, client)
                         sended += len(bytes_read)
                         progress.update(len(bytes_read))
                         if not IGNORE_PACKET_COUNT:
-                            logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                            logger_udp.debug(f"Enviando {filename} a {client} Tamaño paquete: {BUFFER_SIZE}, "
                                              f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
                         if not IGNORE_BYTES_COUNT:
-                            logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
-                                                   f"bytes enviados :{sended}/{filesize}")
+                            logger_udp_bytes.debug(
+                                f"Enviando {filename} a {client} Tamaño paquete: {BUFFER_SIZE}, "
+                                f"bytes enviados :{sended}/{filesize}")
                         bytes_read = file.read(BUFFER_SIZE)
 
         except Exception as e:
             print(f"[ERROR]: {e}")
             logger_connections.exception(e)
-            client[0].close()
         threadQueue.task_done()
-        logger_threads.info(f"Thread finalizó de atender a {client[1]}")
+        logger_threads.info(f"Thread finalizó de atender a {client}")
 
 
 def threaded(client):
-    logger_threads.info(f"Thread empezando a atender a {client[1]}")
+    client = client[0]
+    logger_threads.info(f"Thread empezando a atender a {client}")
     cached_file = get_cached_file(filename)
     try:
         if CLONE_FILE:
@@ -167,9 +184,10 @@ def threaded(client):
         else:
             file = cached_file
 
-        logger_tcp.info(
+        logger_udp.info(
             f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}")
-        client[0].send(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode())
+
+        UDPSocket.sendto(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode(), client)
         sended = 0
         initialTime = datetime.now()
         file.seek(0)
@@ -177,24 +195,23 @@ def threaded(client):
 
         if DISABLE_PROGRESS_BAR:
             while bytes_read:
-                client[0].sendall(bytes_read)
+                UDPSocket.sendto(bytes_read, client)
                 sended += len(bytes_read)
                 if not IGNORE_PACKET_COUNT:
-                    logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                    logger_udp.debug(f"Enviando {filename} a {client} Tamaño paquete: {BUFFER_SIZE}, "
                                      f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
                 if not IGNORE_BYTES_COUNT:
-                    logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                    logger_udp_bytes.debug(f"Enviando {filename} a {client} Tamaño paquete: {BUFFER_SIZE}, "
                                            f"bytes enviados :{sended}/{filesize}")
                 bytes_read = file.read(BUFFER_SIZE)
             now = datetime.now()
-            client[0].close()
-            logger_progress.info(f"Enviando {filename} a {client[1][0]}: 100%|██████████| "
+            logger_progress.info(f"Enviando {filename} a {client}: 100%|██████████| "
                                  f"{round(filesize / (1024 * 1024), 2)}MB/{round(filesize / (1024 * 1024), 2)}MB "
                                  f"[{str(math.floor((now - initialTime).total_seconds() / 60)).zfill(2)}:"
                                  f"{str(math.ceil((now - initialTime).total_seconds()) % 60).zfill(2)}]")
 
         else:
-            progress = tqdm(range(filesize), f"Enviando {filename} a {client[1][0]}", unit="B", unit_scale=True,
+            progress = tqdm(range(filesize), f"Enviando {filename} a {client}", unit="B", unit_scale=True,
                             unit_divisor=BUFFER_SIZE)
 
             while bytes_read:
@@ -203,60 +220,110 @@ def threaded(client):
                         progress.n = filesize
                         progress.refresh()
                         logger_progress.info(str(progress))
-                        client[0].close()
-                        logger_connections.info(f"El usuario {address} se ha desconectado")
+                        logger_connections.info(f"El usuario {client} se ha desconectado")
                         progress.close()
                         break
-                    client[0].sendall(bytes_read)
+                    UDPSocket.sendto(bytes_read, client)
                     sended += len(bytes_read)
                     progress.update(len(bytes_read))
                     if not IGNORE_PACKET_COUNT:
-                        logger_tcp.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                        logger_udp.debug(f"Enviando {filename} a {client} Tamaño paquete: {BUFFER_SIZE}, "
                                          f"paquete :{round(sended / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
                     if not IGNORE_BYTES_COUNT:
-                        logger_tcp_bytes.debug(f"Enviando {filename} a {client[1][0]} Tamaño paquete: {BUFFER_SIZE}, "
+                        logger_udp_bytes.debug(f"Enviando {filename} a {client} Tamaño paquete: {BUFFER_SIZE}, "
                                                f"bytes enviados :{sended}/{filesize}")
                     bytes_read = file.read(BUFFER_SIZE)
 
     except Exception as e:
         print(f"[ERROR]: {e}")
         logger_connections.exception(e)
-        client[0].close()
-    logger_threads.info(f"Thread finalizó de atender a {client[1]}")
+    logger_threads.info(f"Thread finalizó de atender a {client}")
+
 
 # region PARÁMETROS DEL SERVIDOR
+opciones = ["Transferencia de archivos UDP", "Transmisión de vídeo (streaming)"]
+processPrompt = ["Seleccione la cantidad de usuarios a los que quiere enviar el archivo (valor por defecto: 1): ",
+                 "Seleccione el puerto por donde quiere hacer la transmisión:"]
+prompt = {"Directory": f"Ingrese la dirección del directorio (valor por defecto: {DEFAULT_DIRECTORY}): ",
+          "File": "Seleccione el archivo que quiere enviar (valor por defecto: 1): "
+          }
+lista = []
+directory = ""
+filename = ""
+filesize = ""
+threadQueue = None
+FILE_HASH = ""
+UDPSocket = None
 print("** Para utilizar valores por defecto, ingresar cadena vacía **")
-directoryConfirmed = False
-while not directoryConfirmed:
-    directory = str(input(f"Ingrese la dirección del directorio (valor por defecto: {DEFAULT_DIRECTORY}): "))
-    if directory == "":
-        print(f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
-        directory = DEFAULT_DIRECTORY
-    while not os.path.isdir(directory):
-        print(f"La dirección del directorio {directory} no existe, intente nuevamente")
-        directory = str(input(f"Ingrese la dirección del directorio (valor por defecto: {DEFAULT_DIRECTORY}): "))
+
+
+def selectProcess(nextFunction):
+    processConfirmed = False
+    responses = {}
+    while not processConfirmed:
+        strOpcion = "Seleccione qué desea realizar:\n"
+        it = 1
+        for opcion in opciones:
+            strOpcion += f"[{it}] - {opcion}\n"
+            it += 1
+        process = str(input(strOpcion))
+        if not process.isnumeric() or int(process) >= len(opciones) + 1 or int(process) <= 0:
+            print(f"Opción no válida {process}")
+            continue
+        responses["Process"] = process
+        print("Si desea cambiar de opción, utilizar [<]")
+        promptResponse = str(input(prompt["Directory"]))
+        if promptResponse == "<":
+            continue
+        responses["Directory"] = promptResponse
+        return nextFunction(selectProcess, selectFile, responses)
+
+
+def selectDirectory(previousFunction, nextFunction, responses):
+    directoryConfirmed = False
+    global directory, lista
+    directory = responses["Directory"]
+    while not directoryConfirmed:
+        print("Si desea cambiar de opción, utilizar [<]")
         if directory == "":
             print(f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
             directory = DEFAULT_DIRECTORY
+        elif directory == "<":
+            return previousFunction(selectDirectory)
+        while not os.path.isdir(directory):
+            print(f"La dirección del directorio {directory} no existe, intente nuevamente")
+            directory = str(input(prompt["Directory"]))
+            if directory == "":
+                print(f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
+                directory = DEFAULT_DIRECTORY
+            elif directory == "<":
+                return previousFunction(selectDirectory)
+        lista = read_listdir(responses["Process"], directory)
+        if len(lista) == 0:
+            print(f"El directorio no contiene archivos válidos, intente con otro directorio")
+            directory = str(input(prompt["Directory"]))
+            continue
+        print("Mostrando lista de archivos:")
+        print("---------------------------------------------------------------------------\n")
+        for l in lista:
+            print(l)
+        print("\n---------------------------------------------------------------------------")
+        print("Si quiere cambiar de directorio, utilizar [<]")
+        promptResponse = str(input(prompt["File"]))
+        if promptResponse == "<":
+            directory = str(input(prompt["Directory"]))
+            continue
+        responses["File"] = promptResponse
+        return nextFunction(selectDirectory, responses)
 
-    lista = read_listdir(directory)
-    if len(lista) == 0:
-        print("El directorio no contiene archivos, intente con otro directorio")
-        continue;
-    print("Mostrando lista de archivos:")
-    print("---------------------------------------------------------------------------\n")
-    for l in lista:
-        print(l)
-    print("\n---------------------------------------------------------------------------")
-    print("Si quiere cambiar de directorio, utilizar [<]")
-    opt = input("Seleccione el archivo que quiere enviar (valor por defecto: 1): ")
-    if opt == "<":
-        continue
+
+def selectFile(previousFunction, responses):
+    opt = responses["File"]
     fileConfirmed = False
-    firstOption = True
+    global filename, filesize
     while not fileConfirmed:
-        if not firstOption:
-            opt = input("Seleccione el archivo que quiere enviar (valor por defecto: 1): ")
+        if opt == "<":
+            return previousFunction(selectFile, responses)
         while opt != "" and (not opt.isnumeric() or int(opt) > len(lista)):
             opt = input(f"Seleccione una opción válida [1-{len(lista)}] (valor por defecto: 1): ")
         if opt == "":
@@ -266,119 +333,118 @@ while not directoryConfirmed:
         filesize = os.path.getsize(filename)
         print(f"Archivo seleccionado: {filename}, con tamaño: {filesize / (1024 * 1024)} MB")
         print("Si quiere cambiar de archivo, utilizar [<]")
-        usrs = input("Seleccione la cantidad de usuarios a los que quiere enviar el archivo (valor por defecto: 1): ")
-        if usrs == "<":
-            firstOption = False
+        # Imprime siguiente paso según proceso
+        nextStep = input(str(processPrompt[int(responses["Process"]) - 1]))
+        if nextStep == "<":
+            opt = str(input(prompt["File"]))
             continue
-        while usrs != "" and (not usrs.isnumeric() or int(usrs) < 1):
-            usrs = input("Seleccione una opción válida [min. 1] (valor por defecto: 1): ")
-        if usrs == "":
-            usrs = 1
-        usrs = int(usrs)
-        fileConfirmed = True
-    directoryConfirmed = True
+        return sendFile(nextStep) if int(responses["Process"]) == 1 else streamFile(nextStep, responses)
+
+
+# endregion
+
+def sendFile(usrs):
+    global FILE_HASH, UDPSocket
+    while usrs != "" and (not usrs.isnumeric() or int(usrs) < 1):
+        usrs = input("Seleccione una opción válida [min. 1] (valor por defecto: 1): ")
+    if usrs == "":
+        usrs = 1
+    usrs = int(usrs)
     logger_progress.info(f"Se enviará el siguiente archivo: {os.path.basename(filename)},"
                          f" con tamaño: {filesize / (1024 * 1024)} MB")
 
-# endregion
-
-# region MANIPULACIÓN DE ARCHIVO
-hasher = hashlib.sha256()
-with open(filename, 'rb') as afile:
-    buf = afile.read(BLOCKSIZE)
-    while len(buf) > 0:
-        hasher.update(buf)
+    # region MANIPULACIÓN DE ARCHIVO
+    hasher = hashlib.sha256()
+    with open(filename, 'rb') as afile:
         buf = afile.read(BLOCKSIZE)
-FILE_HASH = hasher.hexdigest()
+        while len(buf) > 0:
+            hasher.update(buf)
+            buf = afile.read(BLOCKSIZE)
+    FILE_HASH = hasher.hexdigest()
 
+    conns = 0
+    logger_connections.info(f"Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
+    # UDP Socket
+    UDPSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    UDPSocket.bind((SERVER_HOST, SERVER_PORT))
+    print(f"[*] Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
+    logger_connections.info(f"Se espera la conexión de {'un' if usrs == 1 else usrs} "
+                            f"{'usuario' if usrs == 1 else 'usuarios'} para empezar la transmisión")
 
-@lru_cache(maxsize=None, typed=True)
-def get_cached_file(filename):
-    m = io.BytesIO()
-    with open(filename, 'rb') as f:
-        m.write(f.read())
-    return m
+    arrayOfUsers = []
 
+    try:
+        # region CONEXIÓN CLIENTES
+        while usrs > conns:
 
-# endregion
+            notification, address = UDPSocket.recvfrom(BUFFER_SIZE)
 
-conns = 0
-logger_connections.info(f"Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
-s = socket.socket()
-s.bind((SERVER_HOST, SERVER_PORT))
-print(f"[*] Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
-logger_connections.info(f"Se espera la conexión de {'un' if usrs == 1 else usrs} "
-                        f"{'usuario' if usrs == 1 else 'usuarios'} para empezar la transmisión")
-if not IGNORE_CLIENT_LIMIT:
-    logger_connections.info(f"Máximo número de clientes aceptados: {usrs}")
-    s.listen(usrs)
-else:
-    logger_connections.info(f"Máximo número de clientes aceptados {128}")
-    s.listen(128)
+            logger_connections.info(f"El usuario {address} se ha conectado {conns + 1}/{usrs}")
+            print(f"[+] El usuario {address} se ha conectado {conns + 1}/{usrs}")
 
-arrayOfUsers = []
+            if not EXCLUDE_MESSAGE_COMPARISON:
+                if notification.decode() == "Connection approval":
+                    conns += 1
+                else:
+                    break
 
-try:
-    # region CONEXIÓN CLIENTES
-    while conns < usrs:
-        c, address = s.accept()
-        logger_connections.info(f"El usuario {address} se ha conectado {conns + 1}/{usrs}")
-        print(f"[+] El usuario {address} se ha conectado {conns + 1}/{usrs}")
-        notification = c.recv(BUFFER_SIZE)
-        if not EXCLUDE_MESSAGE_COMPARISON:
-            if notification.decode() == "Notificación de inicio":
-                conns += 1
             else:
-                break
-        else:
-            conns += 1
-        if usrs == 1:
-            threaded([c, address])
-        else:
-            arrayOfUsers.append([c, address])
+                conns += 1
+            if usrs == 1:
+                threaded([address])
+            else:
+                arrayOfUsers.append(address)
 
-    if usrs > 1:
-        if usrs > 25:
-            threadQueue = queue.Queue()
-            for j in range(len(arrayOfUsers)):
-                threadQueue.put(arrayOfUsers[j])
+        if usrs > 1:
+            if usrs > 25:
+                threadQueue = queue.Queue()
+                for j in range(len(arrayOfUsers)):
+                    threadQueue.put(arrayOfUsers[j])
 
-            for i in range(25):
-                t = Thread(target=multiThreaded, daemon=True)
-                t.start()
+                for i in range(25):
+                    t = Thread(target=multiThreaded, daemon=True)
+                    t.start()
 
-            threadQueue.join()
-        else:
-            pool = ThreadPool(usrs)
-            pool.map(threaded, arrayOfUsers)
-    # endregion
-    # region POST EJECUCIÓN
-    print("\n---------------------------------------------------------------------------\n")
-    print(
-        f"        Se finalizó la transferencia para {'el' if usrs == 1 else 'los'} {usrs} "
-        f"{'usuario' if usrs == 1 else 'usuarios'}           ")
-    print("\n---------------------------------------------------------------------------")
-    s.close()
-    if platform == "linux" or platform == "linux2":
-        print(f"El archivo de logs se encuentra en:\n {LOGS_FILE}")
-    elif platform == "win32":
-        abrirLogs = input("¿Desea abrir el archivo de logs?: (por defecto: N) ")
-        if abrirLogs == "Y":
-            abrirLogs = True
-        else:
-            if abrirLogs != "" and abrirLogs != "N":
-                print(f"Valor no admitido {abrirLogs}, se utilizará valor por defecto")
-            abrirLogs = False
-        if abrirLogs:
-            try:
-                if platform == "win32":
-                    os.startfile(LOGS_FILE)
-            except Exception as e:
-                print(f"[ERROR] No se pudo abrir el archivo ({LOGS_FILE}), {e}")
-    exit()
-    # endregion
+                threadQueue.join()
+            else:
+                pool = ThreadPool(usrs)
+                pool.map(threaded, arrayOfUsers)
+        # endregion
+        # region POST EJECUCIÓN
+        print("\n---------------------------------------------------------------------------\n")
+        print(
+            f"        Se finalizó la transferencia para {'el' if usrs == 1 else 'los'} {usrs} "
+            f"{'usuario' if usrs == 1 else 'usuarios'}           ")
+        print("\n---------------------------------------------------------------------------")
+        UDPSocket.close()
+        if platform == "linux" or platform == "linux2":
+            print(f"El archivo de logs se encuentra en:\n {LOGS_FILE}")
+        elif platform == "win32":
+            abrirLogs = input("¿Desea abrir el archivo de logs?: (por defecto: N) ")
+            if abrirLogs == "Y":
+                abrirLogs = True
+            else:
+                if abrirLogs != "" and abrirLogs != "N":
+                    print(f"Valor no admitido {abrirLogs}, se utilizará valor por defecto")
+                abrirLogs = False
+            if abrirLogs:
+                try:
+                    if platform == "win32":
+                        os.startfile(LOGS_FILE)
+                except Exception as e:
+                    print(f"[ERROR] No se pudo abrir el archivo ({LOGS_FILE}), {e}")
+        exit()
+        # endregion
 
 
-except Exception as e:
-    print(e)
-    s.close()
+    except Exception as e:
+        print(e)
+        UDPSocket.close()
+
+
+def streamFile(port, responses):
+    print(port)
+    return selectFile(selectProcess, selectFile, responses)
+
+
+selectProcess(selectDirectory)

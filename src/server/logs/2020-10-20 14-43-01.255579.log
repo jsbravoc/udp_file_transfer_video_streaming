@@ -1,0 +1,6 @@
+2020-10-20 14:43:08 {Progress} [INFO] Se enviará el siguiente archivo: Flujo de Caja Proyectado Gama Verde - 4.xlsx, con tamaño: 0.1472454071044922 MB
+2020-10-20 14:43:09 {Connection} [INFO] Escuchando desde 0.0.0.0:9898
+2020-10-20 14:43:09 {Connection} [INFO] Se espera la conexión de un usuario para empezar la transmisión
+2020-10-20 14:44:24 {Connection} [INFO] El usuario ('127.0.0.1', 60575) se ha conectado 1/1
+2020-10-20 14:44:39 {Threads} [INFO] Thread empezando a atender a ('127.0.0.1', 60575)
+2020-10-20 14:44:46 {TCP_Packets} [INFO] Enviando INFO al Cliente: Flujo de Caja Proyectado Gama Verde - 4.xlsx<SEPARATOR>154398<SEPARATOR>0e8f1f15163af70a35f10cb12c084424417f1dfbfa096a9e63aa397d924595be

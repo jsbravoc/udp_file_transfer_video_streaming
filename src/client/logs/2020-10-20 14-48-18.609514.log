@@ -1,0 +1,302 @@
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :0/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 1024/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :0/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 2048/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :1/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 3072/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :1/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 4096/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :1/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 5120/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :2/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 6144/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :2/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 7168/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :2/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 8192/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :2/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 9216/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :2/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 10240/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :3/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 11264/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :3/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 12288/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :3/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 13312/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :4/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 14336/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :4/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 15360/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :4/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 16384/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :4/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 17408/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :4/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 18432/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :5/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 19456/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :5/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 20480/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :5/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 21504/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :6/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 22528/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :6/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 23552/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :6/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 24576/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :6/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 25600/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :6/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 26624/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :7/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 27648/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :7/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 28672/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :7/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 29696/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :8/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 30720/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :8/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 31744/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :8/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 32768/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :8/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 33792/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :8/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 34816/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :9/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 35840/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :9/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 36864/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :9/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 37888/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :10/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 38912/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :10/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 39936/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :10/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 40960/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :10/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 41984/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :10/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 43008/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :11/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 44032/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :11/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 45056/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :11/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 46080/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :12/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 47104/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :12/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 48128/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :12/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 49152/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :12/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 50176/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :12/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 51200/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :13/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 52224/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :13/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 53248/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :13/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 54272/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :14/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 55296/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :14/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 56320/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :14/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 57344/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :14/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 58368/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :14/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 59392/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :15/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 60416/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :15/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 61440/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :15/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 62464/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :16/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 63488/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :16/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 64512/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :16/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 65536/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :16/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 66560/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :16/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 67584/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :17/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 68608/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :17/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 69632/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :17/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 70656/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :18/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 71680/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :18/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 72704/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :18/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 73728/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :18/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 74752/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :18/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 75776/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :19/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 76800/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :19/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 77824/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :19/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 78848/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :20/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 79872/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :20/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 80896/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :20/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 81920/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :20/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 82944/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :20/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 83968/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :21/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 84992/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :21/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 86016/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :21/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 87040/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :22/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 88064/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :22/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 89088/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :22/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 90112/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :22/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 91136/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :22/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 92160/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :23/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 93184/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :23/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 94208/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :23/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 95232/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :24/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 96256/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :24/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 97280/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :24/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 98304/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :24/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 99328/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :24/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 100352/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :25/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 101376/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :25/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 102400/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :25/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 103424/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :26/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 104448/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :26/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 105472/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :26/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 106496/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :26/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 107520/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :26/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 108544/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :27/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 109568/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :27/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 110592/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :27/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 111616/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :28/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 112640/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :28/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 113664/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :28/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 114688/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :28/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 115712/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :28/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 116736/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :29/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 117760/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :29/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 118784/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :29/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 119808/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :30/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 120832/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :30/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 121856/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :30/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 122880/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :30/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 123904/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :30/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 124928/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :31/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 125952/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :31/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 126976/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :31/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 128000/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :32/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 129024/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :32/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 130048/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :32/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 131072/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :32/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 132096/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :32/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 133120/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :33/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 134144/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :33/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 135168/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :33/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 136192/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :34/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 137216/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :34/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 138240/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :34/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 139264/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :34/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 140288/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :34/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 141312/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :35/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 142336/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :35/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 143360/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :35/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 144384/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :36/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 145408/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :36/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 146432/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :36/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 147456/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :36/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 148480/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :36/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 149504/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :37/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 150528/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :37/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 151552/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :37/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 152576/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :38/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 153600/154398
+2020-10-20 14:48:53 {TCP_Packets} [CRITICAL] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, paquete :38/38
+2020-10-20 14:48:53 {TCP_Bytes} [DEBUG] Recibiendo D:\Test\Flujo de Caja Proyectado Gama Verde - 4.xlsx de localhost Tamaño paquete: 4096, bytes enviados: 154398/154398
