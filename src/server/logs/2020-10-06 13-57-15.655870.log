@@ -1,6 +1,0 @@
-2020-10-06 13:57:28 {Progress} [INFO] Se enviará el siguiente archivo: 201712259.xlsx, con tamaño: 0.9745206832885742 MB
-2020-10-06 13:57:28 {Connection} [INFO] Escuchando desde 0.0.0.0:9898
-2020-10-06 13:57:28 {Connection} [INFO] Se espera la conexión de un usuario para empezar la transmisión
-2020-10-06 13:57:28 {Connection} [INFO] Máximo número de clientes aceptados: 1
-2020-10-06 13:57:43 {Connection} [INFO] El usuario ('127.0.0.1', 62426) se ha conectado 1/1
-2020-10-06 13:58:05 {TCP_Packets} [INFO] Enviando INFO al Cliente: 201712259.xlsx<SEPARATOR>1021859<SEPARATOR>aa734b0e70231086ef72ab036c669194ce7dacbbb0036f65b8b6aa01f80ac320

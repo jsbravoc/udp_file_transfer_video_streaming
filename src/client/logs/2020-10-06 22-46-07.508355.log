@@ -1,3 +1,0 @@
-2020-10-06 22:46:16 {TCP_Packets} [CRITICAL] Recibiendo D:/Test/prueba.txt de s2g6lab3-1.eastus.cloudapp.azure.com Tamaño paquete: 4096, paquete :0/0
-2020-10-06 22:46:16 {TCP_Bytes} [DEBUG] Recibiendo D:/Test/prueba.txt de s2g6lab3-1.eastus.cloudapp.azure.com Tamaño paquete: 4096, bytes enviados: 77/77
-2020-10-06 22:46:16 {Progress} [INFO] Recibiendo D:/Test/prueba.txt de s2g6lab3-1.eastus.cloudapp.azure.com: 100%|█| 77.0/77.0 [00:00<00:00, 77.0k

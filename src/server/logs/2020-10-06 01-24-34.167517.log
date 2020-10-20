@@ -1,3 +1,0 @@
-2020-10-06 Tuesday 01:24:59 TCP_Packets:CRITICAL:El usuario ('127.0.0.1', 54607) se ha conectado 1/1
-2020-10-06 Tuesday 01:24:59 TCP_Packets:CRITICAL:Enviando HEADER al Cliente: D:\Downloads\Taller_3.docx<SEPARATOR>128673<SEPARATOR>6b64262117c9c5454732f3b01ab391414f5d2a8712707abd6dd3e8df07f97e4f
-2020-10-06 Tuesday 01:24:59 Progress:INFO:Enviando D:\Downloads\Taller_3.docx a 127.0.0.1: 100%|██████████| 31.4k/31.4k [00:00<00:00, 128MB/s]
