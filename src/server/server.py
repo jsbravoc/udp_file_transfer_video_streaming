@@ -46,7 +46,8 @@ try:
         print(f.read())
 except Exception as e:
     print(e)
-config = input("Seleccione una configuración por defecto: (valor por defecto: Azure) ")
+config = input(
+    "Seleccione una configuración por defecto: (valor por defecto: Azure) ")
 if config not in cfg.ServerConfig:
     print(f"Valor no admitido {config}, se utilizará valor por defecto")
     config = cfg.ServerConfig["Azure"]
@@ -63,8 +64,10 @@ IGNORE_CLIENT_LIMIT = config['ignoreClientLimit']
 CLONE_FILE = config['cloneFile']
 DISABLE_PROGRESS_BAR = config['disableProgressBar']
 EXCLUDE_MESSAGE_COMPARISON = config['excludeMessageComparison']
+SEND_HEADER = config['sendHeader']
 if HASHING_METHOD != "sha256":
-    print(f"Método de hashing {HASHING_METHOD} no soportado actualmente, utilizando sha256")
+    print(
+        f"Método de hashing {HASHING_METHOD} no soportado actualmente, utilizando sha256")
 
 
 # endregion
@@ -119,7 +122,9 @@ def multiThreaded():
 
             logger_udp.info(
                 f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}")
-            UDPSocket.sendto(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode(), client)
+            if SEND_HEADER:
+                UDPSocket.sendto(
+                    f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode(), client)
             sended = 0
             initialTime = datetime.now()
             file.seek(0)
@@ -153,7 +158,8 @@ def multiThreaded():
                             progress.refresh()
                             logger_progress.info(str(progress))
                             client[0].close()
-                            logger_connections.info(f"El usuario {client} se ha desconectado")
+                            logger_connections.info(
+                                f"El usuario {client} se ha desconectado")
                             progress.close()
                             break
                         UDPSocket.sendto(bytes_read, client)
@@ -187,7 +193,9 @@ def threaded(client):
         logger_udp.info(
             f"Enviando INFO al Cliente: {os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}")
 
-        UDPSocket.sendto(f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode(), client)
+        if SEND_HEADER:
+            UDPSocket.sendto(
+                f"{os.path.basename(filename)}{SEPARATOR}{filesize}{SEPARATOR}{FILE_HASH}".encode(), client)
         sended = 0
         initialTime = datetime.now()
         file.seek(0)
@@ -220,7 +228,8 @@ def threaded(client):
                         progress.n = filesize
                         progress.refresh()
                         logger_progress.info(str(progress))
-                        logger_connections.info(f"El usuario {client} se ha desconectado")
+                        logger_connections.info(
+                            f"El usuario {client} se ha desconectado")
                         progress.close()
                         break
                     UDPSocket.sendto(bytes_read, client)
@@ -241,7 +250,8 @@ def threaded(client):
 
 
 # region PARÁMETROS DEL SERVIDOR
-opciones = ["Transferencia de archivos UDP", "Transmisión de vídeo (streaming)"]
+opciones = ["Transferencia de archivos UDP",
+            "Transmisión de vídeo (streaming)"]
 processPrompt = ["Seleccione la cantidad de usuarios a los que quiere enviar el archivo (valor por defecto: 1): ",
                  "Escriba el puerto por donde quiere hacer la transmisión:"]
 prompt = {"Directory": f"Ingrese la dirección del directorio (valor por defecto: {DEFAULT_DIRECTORY}): ",
@@ -286,28 +296,34 @@ def selectDirectory(previousFunction, nextFunction, responses):
     while not directoryConfirmed:
         print("Si desea cambiar de opción, utilizar [<]")
         if directory == "":
-            print(f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
+            print(
+                f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
             directory = DEFAULT_DIRECTORY
         elif directory == "<":
             return previousFunction(selectDirectory)
         while not os.path.isdir(directory):
-            print(f"La dirección del directorio {directory} no existe, intente nuevamente")
+            print(
+                f"La dirección del directorio {directory} no existe, intente nuevamente")
             directory = str(input(prompt["Directory"]))
             if directory == "":
-                print(f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
+                print(
+                    f"Utilizando dirección del directorio por defecto: {DEFAULT_DIRECTORY}")
                 directory = DEFAULT_DIRECTORY
             elif directory == "<":
                 return previousFunction(selectDirectory)
         lista = read_listdir(responses["Process"], directory)
         if len(lista) == 0:
-            print(f"El directorio no contiene archivos válidos, intente con otro directorio")
+            print(
+                f"El directorio no contiene archivos válidos, intente con otro directorio")
             directory = str(input(prompt["Directory"]))
             continue
         print("Mostrando lista de archivos:")
-        print("---------------------------------------------------------------------------\n")
+        print(
+            "---------------------------------------------------------------------------\n")
         for l in lista:
             print(l)
-        print("\n---------------------------------------------------------------------------")
+        print(
+            "\n---------------------------------------------------------------------------")
         print("Si quiere cambiar de directorio, utilizar [<]")
         promptResponse = str(input(prompt["File"]))
         if promptResponse == "<":
@@ -325,13 +341,16 @@ def selectFile(previousFunction, responses):
         if opt == "<":
             return previousFunction(selectProcess, selectFile, responses)
         while opt != "" and (not opt.isnumeric() or int(opt) > len(lista)):
-            opt = input(f"Seleccione una opción válida [1-{len(lista)}] (valor por defecto: 1): ")
+            opt = input(
+                f"Seleccione una opción válida [1-{len(lista)}] (valor por defecto: 1): ")
         if opt == "":
             opt = 1
         opt = int(opt)
-        filename = os.path.join(directory, lista[opt - 1].partition("-")[len(lista[opt - 1].partition("-")) - 1])
+        filename = os.path.join(
+            directory, lista[opt - 1].partition("-")[len(lista[opt - 1].partition("-")) - 1])
         filesize = os.path.getsize(filename)
-        print(f"Archivo seleccionado: {filename}, con tamaño: {filesize / (1024 * 1024)} MB")
+        print(
+            f"Archivo seleccionado: {filename}, con tamaño: {filesize / (1024 * 1024)} MB")
         print("Si quiere cambiar de archivo, utilizar [<]")
         # Imprime siguiente paso según proceso
         nextStep = input(str(processPrompt[int(responses["Process"]) - 1]))
@@ -346,7 +365,8 @@ def selectFile(previousFunction, responses):
 def sendFile(usrs):
     global FILE_HASH, UDPSocket, threadQueue
     while usrs != "" and (not usrs.isnumeric() or int(usrs) < 1):
-        usrs = input("Seleccione una opción válida [min. 1] (valor por defecto: 1): ")
+        usrs = input(
+            "Seleccione una opción válida [min. 1] (valor por defecto: 1): ")
     if usrs == "":
         usrs = 1
     usrs = int(usrs)
@@ -379,8 +399,10 @@ def sendFile(usrs):
 
             notification, address = UDPSocket.recvfrom(BUFFER_SIZE)
 
-            logger_connections.info(f"El usuario {address} se ha conectado {conns + 1}/{usrs}")
-            print(f"[+] El usuario {address} se ha conectado {conns + 1}/{usrs}")
+            logger_connections.info(
+                f"El usuario {address} se ha conectado {conns + 1}/{usrs}")
+            print(
+                f"[+] El usuario {address} se ha conectado {conns + 1}/{usrs}")
 
             if not EXCLUDE_MESSAGE_COMPARISON:
                 if notification.decode() == "Connection approval":
@@ -415,27 +437,30 @@ def sendFile(usrs):
         print(
             f"        Se finalizó la transferencia para {'el' if usrs == 1 else 'los'} {usrs} "
             f"{'usuario' if usrs == 1 else 'usuarios'}           ")
-        print("\n---------------------------------------------------------------------------")
+        print(
+            "\n---------------------------------------------------------------------------")
         UDPSocket.close()
         if platform == "linux" or platform == "linux2":
             print(f"El archivo de logs se encuentra en:\n {LOGS_FILE}")
         elif platform == "win32":
-            abrirLogs = input("¿Desea abrir el archivo de logs?: (por defecto: N) ")
+            abrirLogs = input(
+                "¿Desea abrir el archivo de logs?: (por defecto: N) ")
             if abrirLogs == "Y":
                 abrirLogs = True
             else:
                 if abrirLogs != "" and abrirLogs != "N":
-                    print(f"Valor no admitido {abrirLogs}, se utilizará valor por defecto")
+                    print(
+                        f"Valor no admitido {abrirLogs}, se utilizará valor por defecto")
                 abrirLogs = False
             if abrirLogs:
                 try:
                     if platform == "win32":
                         os.startfile(LOGS_FILE)
                 except Exception as e:
-                    print(f"[ERROR] No se pudo abrir el archivo ({LOGS_FILE}), {e}")
+                    print(
+                        f"[ERROR] No se pudo abrir el archivo ({LOGS_FILE}), {e}")
         exit()
         # endregion
-
 
     except Exception as e:
         logger_progress.exception(f"[ERROR]: {str(e)}")
@@ -444,6 +469,8 @@ def sendFile(usrs):
 
 filesList = []
 streamingThreads = []
+
+
 def prepareStream(port, responses):
     global UDPSocket, filesList
     if UDPSocket is None:
@@ -461,6 +488,7 @@ def prepareStream(port, responses):
     responses["Directory"] = input(str(prompt["Directory"]))
     return selectDirectory(selectProcess, selectFile, responses)
 
+
 def streamMenu():
     global UDPSocket, filesList
     if UDPSocket is None:
@@ -469,7 +497,7 @@ def streamMenu():
         UDPSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         UDPSocket.bind((SERVER_HOST, SERVER_PORT))
 
-        #Main thread
+        # Main thread
         conns = 0
         while True:
             notification, address = UDPSocket.recvfrom(BUFFER_SIZE)
@@ -488,17 +516,21 @@ def streamMenu():
                 strMenu += file[0]+SEPARATOR+file[1]+SEPARATOR
             UDPSocket.sendto(strMenu[:-len(SEPARATOR)].encode(), address)
 
+
 def streamFiles(port, filename, filesize):
     port = int(port)
-    #https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
-    logger_udp.info(f"Empezando transmisión de vídeo de {os.path.basename(filename)} en puerto {port}")
+    # https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
+    logger_udp.info(
+        f"Empezando transmisión de vídeo de {os.path.basename(filename)} en puerto {port}")
     MCAST_GRP = '224.1.1.1'
     MCAST_PORT = port
 
     MULTICAST_TTL = 32
 
-    streamingSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-    streamingSocket.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, MULTICAST_TTL)
+    streamingSocket = socket.socket(
+        socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+    streamingSocket.setsockopt(
+        socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, MULTICAST_TTL)
     sent = 0
     # notification, address = streamingSocket.recvfrom(BUFFER_SIZE)
     # print(f"[+] El usuario {address} se ha conectado a la transimisión de {os.path.basename(filename)}")
@@ -517,17 +549,17 @@ def streamFiles(port, filename, filesize):
                 data = frame.tobytes()
                 for i in range(0, len(data), 1024):
                     totalSent += 1024
-                    streamingSocket.sendto(data[i:i+1024], (MCAST_GRP, MCAST_PORT))
-                    logger_udp_bytes.debug(f"Se han transmitido {totalSent}/{filesize} bytes")
+                    streamingSocket.sendto(
+                        data[i:i+1024], (MCAST_GRP, MCAST_PORT))
+                    logger_udp_bytes.debug(
+                        f"Se han transmitido {totalSent}/{filesize} bytes")
             else:
                 break
     except Exception as e:
         logger_connections.exception(e)
 
-    print(f"La transmisión de {os.path.basename(filename)} en el puerto {port} ha finalizado {sent}")
-
-
-
+    print(
+        f"La transmisión de {os.path.basename(filename)} en el puerto {port} ha finalizado {sent}")
 
 
 selectProcess(selectDirectory)

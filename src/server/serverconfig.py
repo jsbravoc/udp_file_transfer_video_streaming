@@ -19,8 +19,22 @@ ServerConfig = {
             "ignorePacketCount": False,
             "ignoreBytesCount": False,
             "ignoreClientLimit": False,
-            "cloneFile": True,
+            "cloneFile": False,
             "disableProgressBar": True,
-            "excludeMessageComparison": False
-        }
+            "excludeMessageComparison": False,
+            "sendHeader": True
+        },
+    "jdcamachod": {
+        "defaultIP": "0.0.0.0",
+        "defaultPort": 9898,
+        "defaultDir": "\\home\\diego\\Downloads",
+        "hashingMethod": "sha256",
+        "ignorePacketCount": True,
+        "ignoreBytesCount": True,
+        "ignoreClientLimit": False,
+        "cloneFile": False,
+        "disableProgressBar": True,
+        "excludeMessageComparison": False,
+        "sendHeader": True
+    }
 }
