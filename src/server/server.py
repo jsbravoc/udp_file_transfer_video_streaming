@@ -5,18 +5,18 @@ import math
 import os
 import socket
 from _thread import *
-from datetime import datetime
+from datetime import datetime, time
 from multiprocessing.dummy import Pool as ThreadPool
 from sys import platform
 import hashlib
 from threading import Thread
-
+import time
 import serverconfig as cfg
 from tqdm.notebook import tqdm
 from functools import lru_cache
 import io
 import queue
-
+import cv2 as cv
 # Si no existe la carpeta de logs, entonces se crea
 if not os.path.exists(f"{os.getcwd()}{os.path.sep}logs{os.path.sep}"):
     os.makedirs(f"{os.getcwd()}{os.path.sep}logs{os.path.sep}")
@@ -36,8 +36,8 @@ logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
                     level=logging.DEBUG)
 logger_connections = logging.getLogger("Connection")
 logger_progress = logging.getLogger("Progress")
-logger_udp = logging.getLogger("TCP_Packets")
-logger_udp_bytes = logging.getLogger("TCP_Bytes")
+logger_udp = logging.getLogger("UDP_Packets")
+logger_udp_bytes = logging.getLogger("UDP_Bytes")
 logger_threads = logging.getLogger("Threads")
 
 print("------------Cargar configuraciones por defecto------------")
@@ -88,7 +88,7 @@ def read_listdir(process, dir):
     ind = 1
     archivos = list()
     if int(process) == 2:
-        print("\tBuscando archivos únicamente .mp4")
+        print("\tBuscando archivos únicamente .mp4 o .mkv")
     else:
         print("\tBuscando todos los archivos en el directorio")
     for d in listdir:
@@ -97,11 +97,12 @@ def read_listdir(process, dir):
             continue
         # Transferencia de archivos == 1, Streaming == 2
         if int(process) == 2:
-            if d.endswith(".mp4"):
+            if d.endswith(".mp4") or d.endswith(".mkv"):
                 archivos.append(f"{ind}-{d}")
+                ind += 1
         else:
             archivos.append(f"{ind}-{d}")
-        ind += 1
+            ind += 1
     return archivos
 
 
@@ -243,7 +244,7 @@ def threaded(client):
 # region PARÁMETROS DEL SERVIDOR
 opciones = ["Transferencia de archivos UDP", "Transmisión de vídeo (streaming)"]
 processPrompt = ["Seleccione la cantidad de usuarios a los que quiere enviar el archivo (valor por defecto: 1): ",
-                 "Seleccione el puerto por donde quiere hacer la transmisión:"]
+                 "Escriba el puerto por donde quiere hacer la transmisión:"]
 prompt = {"Directory": f"Ingrese la dirección del directorio (valor por defecto: {DEFAULT_DIRECTORY}): ",
           "File": "Seleccione el archivo que quiere enviar (valor por defecto: 1): "
           }
@@ -323,7 +324,7 @@ def selectFile(previousFunction, responses):
     global filename, filesize
     while not fileConfirmed:
         if opt == "<":
-            return previousFunction(selectFile, responses)
+            return previousFunction(selectProcess, selectFile, responses)
         while opt != "" and (not opt.isnumeric() or int(opt) > len(lista)):
             opt = input(f"Seleccione una opción válida [1-{len(lista)}] (valor por defecto: 1): ")
         if opt == "":
@@ -338,13 +339,13 @@ def selectFile(previousFunction, responses):
         if nextStep == "<":
             opt = str(input(prompt["File"]))
             continue
-        return sendFile(nextStep) if int(responses["Process"]) == 1 else streamFile(nextStep, responses)
+        return sendFile(nextStep) if int(responses["Process"]) == 1 else prepareStream(nextStep, responses)
 
 
 # endregion
 
 def sendFile(usrs):
-    global FILE_HASH, UDPSocket
+    global FILE_HASH, UDPSocket, threadQueue
     while usrs != "" and (not usrs.isnumeric() or int(usrs) < 1):
         usrs = input("Seleccione una opción válida [min. 1] (valor por defecto: 1): ")
     if usrs == "":
@@ -364,10 +365,10 @@ def sendFile(usrs):
 
     conns = 0
     logger_connections.info(f"Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
+    print(f"[*] Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
     # UDP Socket
     UDPSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     UDPSocket.bind((SERVER_HOST, SERVER_PORT))
-    print(f"[*] Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
     logger_connections.info(f"Se espera la conexión de {'un' if usrs == 1 else usrs} "
                             f"{'usuario' if usrs == 1 else 'usuarios'} para empezar la transmisión")
 
@@ -438,13 +439,96 @@ def sendFile(usrs):
 
 
     except Exception as e:
-        print(e)
+        logger_progress.exception(f"[ERROR]: {str(e)}")
         UDPSocket.close()
 
 
-def streamFile(port, responses):
-    print(port)
-    return selectFile(selectProcess, selectFile, responses)
+filesList = []
+streamingThreads = []
+def prepareStream(port, responses):
+    global UDPSocket, filesList
+    if UDPSocket is None:
+        thread = Thread(target=streamMenu)
+        streamingThreads.append(thread)
+        thread.start()
+    if filename not in filesList:
+        filesList.append([port, os.path.basename(filename)])
+
+    thread = Thread(target=streamFiles, args=(port, filename, filesize))
+    streamingThreads.append(thread)
+    thread.start()
+    print("\t Si desea, puede iniciar la transmisión de otro archivo simultáneamente")
+    print("\tDevolviendo al menú de directorios")
+    responses["Directory"] = input(str(prompt["Directory"]))
+    return selectDirectory(selectProcess, selectFile, responses)
+
+def streamMenu():
+    global UDPSocket, filesList
+    if UDPSocket is None:
+        logger_connections.info(f"Preparando transmisión de vídeo")
+        print(f"[*] Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
+        UDPSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        UDPSocket.bind((SERVER_HOST, SERVER_PORT))
+
+        #Main thread
+        conns = 0
+        while True:
+            notification, address = UDPSocket.recvfrom(BUFFER_SIZE)
+            print(f"[+] El usuario {address} se ha conectado.")
+            if not EXCLUDE_MESSAGE_COMPARISON:
+                if notification.decode() == "Connection approval":
+                    conns += 1
+                else:
+                    break
+
+            else:
+                conns += 1
+
+            strMenu = ""
+            for file in filesList:
+                strMenu += file[0]+SEPARATOR+file[1]+SEPARATOR
+            UDPSocket.sendto(strMenu[:-len(SEPARATOR)].encode(), address)
+
+def streamFiles(port, filename, filesize):
+    port = int(port)
+    #https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
+    logger_udp.info(f"Empezando transmisión de vídeo de {os.path.basename(filename)} en puerto {port}")
+    MCAST_GRP = '224.1.1.1'
+    MCAST_PORT = port
+
+    MULTICAST_TTL = 32
+
+    streamingSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+    streamingSocket.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, MULTICAST_TTL)
+    sent = 0
+    # notification, address = streamingSocket.recvfrom(BUFFER_SIZE)
+    # print(f"[+] El usuario {address} se ha conectado a la transimisión de {os.path.basename(filename)}")
+    # logger_connections.debug(f"[+] El usuario {address} se ha conectado a la transimisión de "
+    #                          f"{os.path.basename(filename)}")
+    cap = cv.VideoCapture(filename)
+    width = 640
+    height = 480
+    cap.set(3, width)
+    cap.set(4, height)
+    try:
+        totalSent = 0
+        while True:
+            ret, frame = cap.read()
+            if ret:
+                data = frame.tobytes()
+                for i in range(0, len(data), 1024):
+                    totalSent += 1024
+                    streamingSocket.sendto(data[i:i+1024], (MCAST_GRP, MCAST_PORT))
+                    logger_udp_bytes.debug(f"Se han transmitido {totalSent}/{filesize} bytes")
+            else:
+                break
+    except Exception as e:
+        logger_connections.exception(e)
+
+    print(f"La transmisión de {os.path.basename(filename)} en el puerto {port} ha finalizado {sent}")
+
+
+
 
 
 selectProcess(selectDirectory)

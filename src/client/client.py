@@ -8,6 +8,9 @@ from sys import platform
 import hashlib
 import clientconfig as cfg
 import tqdm
+import numpy as np
+import cv2 as cv
+import struct
 
 # Si no existe la carpeta de logs, entonces se crea
 if not os.path.exists(f"{os.getcwd()}{os.path.sep}logs{os.path.sep}"):
@@ -46,8 +49,8 @@ logging.basicConfig(handlers=[logging.FileHandler(filename=LOGS_FILE,
                     datefmt="%F %T",
                     level=logging.DEBUG)
 logger_progress = logging.getLogger("Progress")
-logger_tcp = logging.getLogger("TCP_Packets")
-logger_tcp_bytes = logging.getLogger("TCP_Bytes")
+logger_udp = logging.getLogger("UDP_Packets")
+logger_udp_bytes = logging.getLogger("UDP_Bytes")
 # endregion
 
 
@@ -107,44 +110,48 @@ if int(process) == 1:
     filesize = int(filesize)
     received = 0
     progress = tqdm.tqdm(range(filesize), f"Recibiendo {filename} de {host}", unit="B", unit_scale=True,
-                         unit_divisor=1024)
+                         unit_divisor=BUFFER_SIZE)
     try:
         s.settimeout(5)
         with open(filename, "wb") as f:
             for _ in progress:
                 bytes_read, addrServer = s.recvfrom(BUFFER_SIZE)
+                received += len(bytes_read)
+                progress.update(len(bytes_read))
+                if not IGNORE_PACKET_COUNT:
+                    logger_udp.critical(f"Recibiendo {filename} de {host} Tamaño paquete: {BUFFER_SIZE}, "
+                                        f"paquete :{round(received / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
+                if not IGNORE_BYTES_COUNT:
+                    logger_udp_bytes.debug(f"Recibiendo {filename} de {host} Tamaño paquete: {BUFFER_SIZE}, "
+                                       f"bytes enviados: {received}/{filesize}")
                 if received == filesize or not bytes_read:
-                    progress.n = filesize
-                    progress.refresh()
+                    # progress.n = filesize
+                    # progress.refresh()
                     logger_progress.info(str(progress))
                     s.close()
                     progress.close()
                     break
                 f.write(bytes_read)
-                received += len(bytes_read)
-                progress.update(len(bytes_read))
 
-                if not IGNORE_PACKET_COUNT:
-                    logger_tcp.critical(f"Recibiendo {filename} de {host} Tamaño paquete: {BUFFER_SIZE}, "
-                                        f"paquete :{round(received / BUFFER_SIZE)}/{round(filesize / BUFFER_SIZE)}")
-                if not IGNORE_BYTES_COUNT:
-                    logger_tcp_bytes.debug(f"Recibiendo {filename} de {host} Tamaño paquete: {BUFFER_SIZE}, "
-                                           f"bytes enviados: {received}/{filesize}")
+
+
     except Exception as e:
         print(e)
+        logger_progress.exception(f"[ERROR]: {str(e)}")
         s.close()
     # endregion
 
     # region VALIDACIÓN ARCHIVO
     print("\n---------------------------------------------------------------------------\n")
     print(f"   Se finalizó la transferencia del archivo {os.path.basename(filename)}            ")
+    logger_progress.debug(f"Se finalizó la transferencia del archivo {os.path.basename(filename)}")
     print("\n---------------------------------------------------------------------------")
 
     print("\n---------------------------------------------------------------------------\n")
     print(f"                 Verificando hash SHA-256 del servidor             ")
     print("\n---------------------------------------------------------------------------")
     print(f"\n Hash del servidor: {hashServer} \n")
-
+    logger_progress.debug(f"Hash del servidor: {hashServer}")
     hasher = hashlib.sha256()
     with open(filename, 'rb') as afile:
         buf = afile.read(BLOCKSIZE)
@@ -153,11 +160,14 @@ if int(process) == 1:
             buf = afile.read(BLOCKSIZE)
     hashClient = hasher.hexdigest()
 
+    logger_progress.debug(f"Hash del cliente: {hashClient}")
     print(f"\n Hash del cliente: {hashClient} \n")
 
     if hashServer == hashClient:
+        logger_progress.debug(f"Hash SHA-256 verificado correctamente")
         print("Hash SHA-256 verificado correctamente")
     else:
+        logger_progress.critical(f"[ERROR] El hash del archivo no coincide con el del servidor")
         print("[ERROR] El hash del archivo no coincide con el del servidor")
     # endregion
 
@@ -192,5 +202,72 @@ if int(process) == 1:
         except Exception as e:
             print(f"[ERROR] No se pudo abrir el archivo ({LOGS_FILE}), {e}")
 else:
-    print("Unimplemented")
+    port = config['defaultPort']
+    try:
+        while True:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.sendto("Connection approval".encode(), (host, port))
+            #Recepcion menu
+            received, addr = s.recvfrom(BUFFER_SIZE)
+            received = received.decode()
+            menu = received.split(SEPARATOR)
+            strMenu = "Transmisiones disponibles:\n"
+            puertosPosibles = []
+            recorrerMenu: True
+            i = 0
+            while i < len(menu):
+                puertosPosibles.append(menu[i])
+                strMenu += f"[{menu[i]}] - {menu[i+1]}"
+                i=i+2
+            print(strMenu)
+            transmisionCorrecta = False
+            while not transmisionCorrecta:
+                transmision = input(str("Elija la transmisión a sintonizar"))
+                transmisionCorrecta = transmision.isnumeric() and transmision in puertosPosibles
+            width = 640
+            height = 480
+            num_of_chunks = width * height * 3 / 1024
+            MCAST_GRP = '224.1.1.1'
+            MCAST_PORT = int(transmision)
+            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+            try:
+                sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            except AttributeError:
+                pass
+            sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 32)
+            sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_LOOP, 1)
+
+            #MCAST_GRP
+            sock.bind(('', MCAST_PORT))
+            host = socket.gethostbyname(socket.gethostname())
+            sock.setsockopt(socket.SOL_IP, socket.IP_MULTICAST_IF, socket.inet_aton(host))
+            sock.setsockopt(socket.SOL_IP, socket.IP_ADD_MEMBERSHIP,
+                            socket.inet_aton(MCAST_GRP) + socket.inet_aton(host))
+
+            print("Presione [Q] para detener la transmisión")
+            while True:
+                chunks = []
+                start = False
+                while len(chunks) < num_of_chunks:
+                    chunk, _ = sock.recvfrom(1024)
+                    chunks.append(chunk)
+
+                byte_frame = b''.join(chunks)
+
+                frame = np.frombuffer(
+                    byte_frame, dtype=np.uint8).reshape(height, width, 3)
+
+                cv.imshow("Transmisión en vivo", frame)
+
+                if cv.waitKey(5) & 0xFF == ord('q'):
+                    break
+            cv.destroyAllWindows()
+            s.close()
+    except KeyboardInterrupt:
+        exit()
+
+
+
+
 # endregion
+
