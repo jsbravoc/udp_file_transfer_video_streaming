@@ -23,7 +23,7 @@ if not os.path.exists(f"{os.getcwd()}{os.path.sep}logs{os.path.sep}"):
 
 # region CONSTANTES
 LOGS_FILE = f"{os.getcwd()}{os.path.sep}logs{os.path.sep}{str.replace(str(datetime.now()), ':', '-')}.log"
-BUFFER_SIZE = 1024
+BUFFER_SIZE = 4096
 SEPARATOR = "<SEPARATOR>"
 BLOCKSIZE = 65536
 # endregion
