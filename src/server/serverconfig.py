@@ -27,7 +27,7 @@ ServerConfig = {
     "jdcamachod": {
         "defaultIP": "0.0.0.0",
         "defaultPort": 9898,
-        "defaultDir": "\\home\\diego\\Downloads",
+        "defaultDir": "/home/diego/Downloads",
         "hashingMethod": "sha256",
         "ignorePacketCount": True,
         "ignoreBytesCount": True,
@@ -35,6 +35,6 @@ ServerConfig = {
         "cloneFile": False,
         "disableProgressBar": True,
         "excludeMessageComparison": False,
-        "sendHeader": True
+        "sendHeader": False
     }
 }
