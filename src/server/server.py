@@ -176,7 +176,6 @@ def multiThreaded():
 
 
 def threaded(client):
-    client = client[0]
     logger_threads.info(f"Thread empezando a atender a {client}")
     cached_file = get_cached_file(filename)
     try:
@@ -392,7 +391,7 @@ def sendFile(usrs):
             else:
                 conns += 1
             if usrs == 1:
-                threaded([address])
+                threaded(address)
             else:
                 arrayOfUsers.append(address)
 
