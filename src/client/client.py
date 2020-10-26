@@ -87,19 +87,16 @@ if int(process) == 1:
     if not os.path.exists(path):
         os.makedirs(path)
     # endregion
-
+    print(f"[+] Abriendo socket, enviando solicitud a {host}:{port}")
     # region CONEXIÓN CON EL SERVIDOR
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    # print(f"[+] Conectando a {host}:{port}")
-    # try:
-    #     s.bind((host, port))
-    # except Exception as e:
-    #     print(f"[ERROR]: {e}")
-    #     exit(-1)
-    # print("[+] Conectado.")
-
-    s.sendto("Connection approval".encode(), (host, port))
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.sendto("Connection approval".encode(), (host, port))
+    except Exception as e:
+        print(f"[ERROR]: {e}")
+        exit(-1)
     # endregion
+    print("[+] Solicitud enviada.")
 
     # region RECEPCIÓN ARCHIVO
     received, addr = s.recvfrom(BUFFER_SIZE)
