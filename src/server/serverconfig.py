@@ -14,12 +14,12 @@ ServerConfig = {
     "jsbravoc": {
             "defaultIP": "0.0.0.0",
             "defaultPort": 9898,
-            "defaultDir": "D:\\Downloads",
+            "defaultDir": "D:\\Downloads\\Videos",
             "hashingMethod": "sha256",
             "ignorePacketCount": False,
             "ignoreBytesCount": False,
             "ignoreClientLimit": False,
-            "cloneFile": False,
+            "cloneFile": True,
             "disableProgressBar": True,
             "excludeMessageComparison": False,
             "sendHeader": True
