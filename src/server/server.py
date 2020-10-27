@@ -576,4 +576,4 @@ try:
     selectProcess(selectDirectory)
 except KeyboardInterrupt as a:
     print("Deteniendo servicios a petición del usuario (Ctrl + C)...")
-    exit(-1)
+    exit()
