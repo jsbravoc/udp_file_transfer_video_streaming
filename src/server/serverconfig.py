@@ -36,5 +36,18 @@ ServerConfig = {
         "disableProgressBar": True,
         "excludeMessageComparison": False,
         "sendHeader": False
+    },
+    "Hyper-V": {
+        "defaultIP": "0.0.0.0",
+        "defaultPort": 9898,
+        "defaultDir": "/home/jsbravoc/Downloads",
+        "hashingMethod": "sha256",
+        "ignorePacketCount": False,
+        "ignoreBytesCount": False,
+        "ignoreClientLimit": False,
+        "cloneFile": True,
+        "disableProgressBar": True,
+        "excludeMessageComparison": False,
+        "sendHeader": True
     }
 }

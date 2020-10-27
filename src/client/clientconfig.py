@@ -12,5 +12,12 @@ ClientConfig = {
             "defaultDir": "D:\\Test",
             "ignorePacketCount": False,
             "ignoreBytesCount": False,
-        }
+        },
+    "Hyper-V": {
+        "defaultIP": "192.168.0.3",
+        "defaultPort": 9898,
+        "defaultDir": "D:\\Test",
+        "ignorePacketCount": False,
+        "ignoreBytesCount": False,
+    }
 }
