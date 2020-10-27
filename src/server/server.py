@@ -23,7 +23,7 @@ if not os.path.exists(f"{os.getcwd()}{os.path.sep}logs{os.path.sep}"):
 
 # region CONSTANTES
 LOGS_FILE = f"{os.getcwd()}{os.path.sep}logs{os.path.sep}{str.replace(str(datetime.now()), ':', '-')}.log"
-BUFFER_SIZE = 4096
+BUFFER_SIZE = 64000
 SEPARATOR = "<SEPARATOR>"
 BLOCKSIZE = 65536
 # endregion
@@ -253,9 +253,9 @@ def threaded(client):
 opciones = ["Transferencia de archivos UDP",
             "Transmisión de vídeo (streaming)"]
 processPrompt = ["Seleccione la cantidad de usuarios a los que quiere enviar el archivo (valor por defecto: 1): ",
-                 "Escriba el puerto por donde quiere hacer la transmisión:"]
+                 f"Escriba la dirección del grupo multicast por donde quiere hacer la transmisión (valor por defecto: 224.1.1.1):  "]
 prompt = {"Directory": f"Ingrese la dirección del directorio (valor por defecto: {DEFAULT_DIRECTORY}): ",
-          "File": "Seleccione el archivo que quiere enviar (valor por defecto: 1): "
+          "File": "Seleccione el archivo que quiere enviar/transmitir (valor por defecto: 1): "
           }
 lista = []
 directory = ""
@@ -384,7 +384,7 @@ def sendFile(usrs):
 
     conns = 0
     logger_connections.info(f"Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
-    print(f"[*] Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
+    print(f"[*] Escuchando desde {SERVER_HOST}:{SERVER_PORT}\n")
     # UDP Socket
     UDPSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     UDPSocket.bind((SERVER_HOST, SERVER_PORT))
@@ -471,20 +471,30 @@ filesList = []
 streamingThreads = []
 
 
-def prepareStream(port, responses):
+def prepareStream(mcast_group, responses):
+    MCAST_GRP = '224.1.1.1'
+    if mcast_group == "":
+        mcast_group = MCAST_GRP
+
     global UDPSocket, filesList
     if UDPSocket is None:
         thread = Thread(target=streamMenu)
         streamingThreads.append(thread)
         thread.start()
-    if filename not in filesList:
-        filesList.append([port, os.path.basename(filename)])
+    
+    mcast_port = input(str("Escriba el puerto que utilizará la transmisión de vídeo: "))
+    while not mcast_port.isnumeric():
+        print("Opción inválida")
+        mcast_port = input(str("Escriba el puerto que utilizará la transmisión de vídeo: "))
 
-    thread = Thread(target=streamFiles, args=(port, filename, filesize))
+    if [mcast_group, mcast_port, os.path.basename(filename)] not in filesList:
+        filesList.append([mcast_group, mcast_port, os.path.basename(filename)])
+
+    thread = Thread(target=streamFiles, args=(mcast_group, mcast_port, filename, filesize))
     streamingThreads.append(thread)
     thread.start()
     print("\t Si desea, puede iniciar la transmisión de otro archivo simultáneamente")
-    print("\tDevolviendo al menú de directorios")
+    print("\tDevolviendo al menú de directorios\n")
     responses["Directory"] = input(str(prompt["Directory"]))
     return selectDirectory(selectProcess, selectFile, responses)
 
@@ -493,7 +503,7 @@ def streamMenu():
     global UDPSocket, filesList
     if UDPSocket is None:
         logger_connections.info(f"Preparando transmisión de vídeo")
-        print(f"[*] Escuchando desde {SERVER_HOST}:{SERVER_PORT}")
+        print(f"\n[*] Empezando transmisión de menú desde {SERVER_HOST}:{SERVER_PORT}")
         UDPSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         UDPSocket.bind((SERVER_HOST, SERVER_PORT))
 
@@ -512,17 +522,20 @@ def streamMenu():
                 conns += 1
 
             strMenu = ""
-            for file in filesList:
-                strMenu += file[0]+SEPARATOR+file[1]+SEPARATOR
-            UDPSocket.sendto(strMenu[:-len(SEPARATOR)].encode(), address)
+            if len(filesList) > 0:
+                for file in filesList:
+                    strMenu += file[0]+SEPARATOR+file[1]+SEPARATOR+file[2]+SEPARATOR
+                UDPSocket.sendto(strMenu[:-len(SEPARATOR)].encode(), address)
 
 
-def streamFiles(port, filename, filesize):
+def streamFiles(group, port, filename, filesize):
+    global BUFFER_SIZE
     port = int(port)
     # https://stackoverflow.com/questions/603852/how-do-you-udp-multicast-in-python
     logger_udp.info(
-        f"Empezando transmisión de vídeo de {os.path.basename(filename)} en puerto {port}")
+        f"Empezando transmisión de vídeo de {os.path.basename(filename)} en {group} - {port}")
     MCAST_GRP = '224.1.1.1'
+    MCAST_GROUP = group
     MCAST_PORT = port
 
     MULTICAST_TTL = 32
@@ -532,25 +545,22 @@ def streamFiles(port, filename, filesize):
     streamingSocket.setsockopt(
         socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, MULTICAST_TTL)
     sent = 0
-    # notification, address = streamingSocket.recvfrom(BUFFER_SIZE)
-    # print(f"[+] El usuario {address} se ha conectado a la transimisión de {os.path.basename(filename)}")
-    # logger_connections.debug(f"[+] El usuario {address} se ha conectado a la transimisión de "
-    #                          f"{os.path.basename(filename)}")
     cap = cv.VideoCapture(filename)
     width = 640
-    height = 480
+    height = 360
     cap.set(3, width)
     cap.set(4, height)
+    BUFFER_SIZE = 57600
     try:
         totalSent = 0
         while True:
             ret, frame = cap.read()
             if ret:
                 data = frame.tobytes()
-                for i in range(0, len(data), 1024):
-                    totalSent += 1024
+                for i in range(0, len(data), BUFFER_SIZE):
+                    totalSent += BUFFER_SIZE
                     streamingSocket.sendto(
-                        data[i:i+1024], (MCAST_GRP, MCAST_PORT))
+                        data[i:i+BUFFER_SIZE], (MCAST_GROUP, MCAST_PORT))
                     logger_udp_bytes.debug(
                         f"Se han transmitido {totalSent}/{filesize} bytes")
             else:
@@ -562,4 +572,8 @@ def streamFiles(port, filename, filesize):
         f"La transmisión de {os.path.basename(filename)} en el puerto {port} ha finalizado {sent}")
 
 
-selectProcess(selectDirectory)
+try:
+    selectProcess(selectDirectory)
+except KeyboardInterrupt as a:
+    print("Deteniendo servicios a petición del usuario (Ctrl + C)...")
+    exit(-1)

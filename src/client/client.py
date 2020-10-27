@@ -19,7 +19,7 @@ if not os.path.exists(f"{os.getcwd()}{os.path.sep}logs{os.path.sep}"):
 # region CONSTANTES
 LOGS_FILE = f"{os.getcwd()}{os.path.sep}logs{os.path.sep}{str.replace(str(datetime.now()), ':', '-')}.log"
 SEPARATOR = "<SEPARATOR>"
-BUFFER_SIZE = 4096
+BUFFER_SIZE = 64000
 BLOCKSIZE = 65536
 # endregion
 
@@ -199,33 +199,41 @@ if int(process) == 1:
         except Exception as e:
             print(f"[ERROR] No se pudo abrir el archivo ({LOGS_FILE}), {e}")
 else:
-    port = config['defaultPort']
     try:
         while True:
+            BUFFER_SIZE = 57600
             s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            s.sendto("Connection approval".encode(), (host, port))
+            s.sendto("Connection approval".encode(), (host, int(config['defaultPort'])))
             #Recepcion menu
             received, addr = s.recvfrom(BUFFER_SIZE)
             received = received.decode()
             menu = received.split(SEPARATOR)
             strMenu = "Transmisiones disponibles:\n"
             puertosPosibles = []
+            direccionesPosibles = []
             recorrerMenu: True
             i = 0
             while i < len(menu):
-                puertosPosibles.append(menu[i])
-                strMenu += f"[{menu[i]}] - {menu[i+1]}"
-                i=i+2
+                direccionesPosibles.append(menu[i])
+                puertosPosibles.append(menu[i+1])
+                strMenu += f"[{menu[i]} - {menu[i+1]}] - {menu[i+2]}\n"
+                i=i+3
             print(strMenu)
             transmisionCorrecta = False
             while not transmisionCorrecta:
-                transmision = input(str("Elija la transmisión a sintonizar"))
-                transmisionCorrecta = transmision.isnumeric() and transmision in puertosPosibles
+                transmision = input(str("Elija la transmisión a sintonizar: "))
+                try:
+                    dirgroup, port = transmision.split("-")
+                    dirgroup = dirgroup.strip()
+                    port = port.strip()
+                except Exception as e:
+                    continue
+                transmisionCorrecta = dirgroup in direccionesPosibles and port.isnumeric() and port in puertosPosibles
             width = 640
-            height = 480
-            num_of_chunks = width * height * 3 / 1024
-            MCAST_GRP = '224.1.1.1'
-            MCAST_PORT = int(transmision)
+            height = 360
+            num_of_chunks = width * height * 3 / BUFFER_SIZE
+            MCAST_GRP = dirgroup
+            MCAST_PORT = int(port)
             sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
             try:
                 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -234,19 +242,20 @@ else:
             sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 32)
             sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_LOOP, 1)
 
-            #MCAST_GRP
-            sock.bind(('', MCAST_PORT))
-            host = socket.gethostbyname(socket.gethostname())
-            sock.setsockopt(socket.SOL_IP, socket.IP_MULTICAST_IF, socket.inet_aton(host))
-            sock.setsockopt(socket.SOL_IP, socket.IP_ADD_MEMBERSHIP,
-                            socket.inet_aton(MCAST_GRP) + socket.inet_aton(host))
 
+            sock.setsockopt(socket.SOL_IP, socket.IP_ADD_MEMBERSHIP,
+                            socket.inet_aton(MCAST_GRP) +
+                            socket.inet_aton((socket.gethostbyname(socket.gethostname()))))
+            
+            #MCAST_GRP
+            sock.bind(('0.0.0.0', MCAST_PORT))
+            struct.pack("4sl", socket.inet_aton(MCAST_GRP), socket.INADDR_ANY)
             print("Presione [Q] para detener la transmisión")
             while True:
                 chunks = []
                 start = False
                 while len(chunks) < num_of_chunks:
-                    chunk, _ = sock.recvfrom(1024)
+                    chunk, _ = sock.recvfrom(BUFFER_SIZE)
                     chunks.append(chunk)
 
                 byte_frame = b''.join(chunks)
@@ -258,10 +267,15 @@ else:
 
                 if cv.waitKey(5) & 0xFF == ord('q'):
                     break
+            print("Finalizando transmisión")
             cv.destroyAllWindows()
             s.close()
     except KeyboardInterrupt:
         exit()
+    except ConnectionResetError as e:
+        print("El servidor rechazó la conexión, seguro que está corriendo?")
+        exit()
+
 
 
 
